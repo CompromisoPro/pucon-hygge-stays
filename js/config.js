@@ -8,8 +8,8 @@
     4. Copia el "anon public" key y pégalo en SUPABASE_KEY
     ══════════════════════════════════════════════════════════════ */
 
-const SUPABASE_URL = 'PEGAR_AQUI_TU_PROJECT_URL';
-const SUPABASE_KEY = 'PEGAR_AQUI_TU_ANON_PUBLIC_KEY';
+const SUPABASE_URL = 'https://vpoutrwyrtcwsvwhumwz.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwb3V0cnd5cnRjd3N2d2h1bXd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NTg1NDUsImV4cCI6MjA5MjUzNDU0NX0.fO0eDhVcOntA0muHFGNG8K3kwgahRVyBTMv_p7rLvDY';
 
 /* ── Flag de configuración ── */
 const SUPABASE_CONFIGURED = !SUPABASE_URL.startsWith('PEGAR_AQUI') && !SUPABASE_KEY.startsWith('PEGAR_AQUI');
