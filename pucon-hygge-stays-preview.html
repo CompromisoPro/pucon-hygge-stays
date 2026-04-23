@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pucon Hygge Stays — Departamentos en Pucón</title>
+  <meta name="description" content="Acogedores departamentos en Pucón con piscina, gimnasio y todas las comodidades. Vive la experiencia hygge en el sur de Chile." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+  <script src="js/config.js"></script>
+  <script>
+  /* Remap URLs with expired tokens → local files, runs before DOM renders */
+  (function() {
+    const MAP = {
+      'OL0TxCNH': 'images/207/01-sala-living-1.jpg',
+      'Sm3zR4Id': 'images/207/02-sala-living-2.jpg',
+      'o5PwW0sI': 'images/207/03-dormitorio-principal.jpg',
+      'wpUzhCXu': 'images/207/04-dormitorio-2.jpg',
+      'tcLG9LuF': 'images/207/05-dormitorio-3-twin.jpg',
+      'kTE2chrB': 'images/207/06-cocina-comedor.jpg',
+      '75DJfBSl': 'images/207/07-terraza.jpg',
+      'marqn07M': 'images/207/08-terraza-vista-volcan.jpg',
+      'gKl5qZEW': 'images/207/09-bano.jpg',
+      'ThSo6l9M': 'images/201/01-living-sala.jpg',
+      'qWSPCpXZ': 'images/201/02-dormitorio-principal.jpg',
+      'uYU9i5Xu': 'images/201/03-cocina-comedor.jpg',
+      'NTCHTEuy': 'images/201/04-living-cocina.jpg',
+      'kgra08Qh': 'images/201/05-dormitorio-literas.jpg',
+      'ZkwvDzAJ': 'images/201/06-terraza.jpg',
+      'h5nK7MHG': 'images/201/07-bano.jpg',
+      'x6s0U36e': 'images/201/08-pasillo-macrame.jpg',
+      'cRvObS0n': 'images/comunes/juegos-infantiles.jpg',
+      'KyXjLBZN': 'images/comunes/lavanderia.jpg',
+      '6PgxqDIw': 'images/comunes/ski-telecabina.jpg'
+    };
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('img').forEach(function(img) {
+        var src = img.getAttribute('src') || '';
+        for (var id in MAP) {
+          if (src.indexOf('/s/' + id) !== -1) {
+            img.src = MAP[id];
+            break;
+          }
+        }
+      });
+    });
+  })();
+  </script>
+  <style>
+/* ═══════════════════════════════════════════════
+   PUCON HYGGE STAYS — Premium CSS
+   ═══════════════════════════════════════════════ */
+
+/* ─── CUSTOM PROPERTIES ─── */
+:root {
+  --cream: #F7F3EC;
+  --cream-dark: #EDE8DF;
+  --sand: #D9C9B0;
+  --tan: #C4A882;
+  --bark: #8B6B4A;
+  --earth: #5C3D2E;
+  --forest: #3D5A3E;
+  --forest-light: #5B7F5C;
+  --sage: #8FAF7C;
+  --coal: #1E1E1E;
+  --charcoal: #2C2C2C;
+  --mid: #666666;
+  --light: #999999;
+  --white: #FFFFFF;
+  --primary: #5C3D2E;
+  --primary-hover: #4A2F22;
+  --accent: #3D5A3E;
+  --accent-light: #EEF5EE;
+  --gold: #C4A054;
+  --gold-light: #F5EDD6;
+  --whatsapp: #25D366;
+  --whatsapp-hover: #1DB954;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-alt: 'Lora', Georgia, serif;
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: 1220px;
+  --gap: 2rem;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.14);
+  --shadow-xl: 0 40px 80px rgba(0,0,0,0.18);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --trans: 0.3s var(--ease);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.section { padding: var(--section-pad) 0; }
+.section-alt { background-color: var(--white); }
+.section-header { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-header.center { text-align: center; }
+.section-header.center .section-title::after { margin: 0 auto; }
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--earth);
+  line-height: 1.18;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.section-title em { font-style: italic; color: var(--bark); }
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--tan));
+  margin-top: 1rem;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--mid);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-radius: 50px;
+  transition: all var(--trans);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary { background: var(--primary); color: var(--white); box-shadow: 0 4px 16px rgba(92,61,46,0.25); }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,61,46,0.35); }
+.btn-ghost { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+.btn-ghost:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
+.btn-whatsapp { background: var(--whatsapp); color: var(--white); box-shadow: 0 4px 16px rgba(37,211,102,0.3); }
+.btn-whatsapp:hover { background: var(--whatsapp-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+.btn-sm { padding: 0.6rem 1.3rem; font-size: 0.84rem; }
+.btn-full { width: 100%; justify-content: center; padding: 1rem 2rem; }
+
+/* ═══════════ HEADER / NAV ═══════════ */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  transition: background var(--trans), box-shadow var(--trans);
+  padding: 0;
+}
+
+.header.scrolled {
+  background: rgba(247, 243, 236, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--white);
+  transition: color var(--trans);
+}
+
+.header.scrolled .nav-logo { color: var(--earth); }
+.logo-mark { font-size: 1.4rem; color: var(--gold); line-height: 1; }
+.logo-text strong { font-weight: 700; }
+
+.nav-menu { display: flex; align-items: center; gap: 0.25rem; }
+
+.nav-link {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  border-radius: 50px;
+  transition: all var(--trans);
+}
+
+.header.scrolled .nav-link { color: var(--charcoal); }
+.nav-link:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+.header.scrolled .nav-link:hover { background: var(--cream-dark); color: var(--earth); }
+
+.nav-cta {
+  margin-left: 0.5rem;
+  padding: 0.55rem 1.4rem;
+  background: var(--white);
+  color: var(--earth) !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all var(--trans);
+}
+
+.header.scrolled .nav-cta { background: var(--primary); color: var(--white) !important; }
+.nav-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all var(--trans); }
+.header.scrolled .nav-hamburger span { background: var(--earth); }
+.nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ═══════════ HERO ═══════════ */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transform: scale(1.05); animation: heroZoom 12s ease-out forwards; }
+@keyframes heroZoom { to { transform: scale(1); } }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(165deg, rgba(20,10,5,0.65) 0%, rgba(30,15,8,0.55) 40%, rgba(10,20,10,0.40) 100%); }
+.hero-content { position: relative; z-index: 2; padding: 8rem 0 5rem; max-width: 680px; }
+.hero-eyebrow { display: inline-block; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: rgba(196,160,84,0.15); border: 1px solid rgba(196,160,84,0.4); padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; animation: fadeUp 0.8s var(--ease) 0.2s both; }
+.hero-title { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 700; color: var(--white); line-height: 1.08; margin-bottom: 1.5rem; animation: fadeUp 0.8s var(--ease) 0.35s both; }
+.hero-title em { font-style: italic; color: var(--sand); }
+.hero-subtitle { font-size: clamp(1rem, 1.8vw, 1.18rem); color: rgba(255,255,255,0.82); max-width: 520px; margin-bottom: 2.5rem; animation: fadeUp 0.8s var(--ease) 0.5s both; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; animation: fadeUp 0.8s var(--ease) 0.65s both; }
+.hero-actions .btn-ghost { color: var(--white); border-color: rgba(255,255,255,0.5); }
+.hero-actions .btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: var(--white); color: var(--white); }
+.hero-stats { display: flex; align-items: center; gap: 2rem; animation: fadeUp 0.8s var(--ease) 0.8s both; }
+.stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat strong { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--white); line-height: 1; }
+.stat span { font-size: 0.78rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.08em; }
+.stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.25); }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: fadeIn 1s var(--ease) 1.2s both; }
+.scroll-line { display: block; width: 1px; height: 48px; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.6)); animation: scrollPulse 2s ease-in-out infinite; }
+.scroll-text { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(0.8); } 50% { opacity: 1; transform: scaleY(1); } }
+
+/* ═══════════ VALOR STRIP ═══════════ */
+.valor-strip { background: var(--earth); padding: 1.4rem 0; }
+.valor-grid { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0; }
+.valor-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 1.6rem; color: rgba(255,255,255,0.85); font-size: 0.87rem; font-weight: 500; border-right: 1px solid rgba(255,255,255,0.12); }
+.valor-item:last-child { border-right: none; }
+.valor-item i { color: var(--gold); font-size: 1rem; }
+
+/* ═══════════ ABOUT ═══════════ */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); align-items: center; }
+.about-images { position: relative; }
+.about-img-main { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-xl); }
+.about-img-main img { width: 100%; height: 100%; transition: transform 0.8s var(--ease); }
+.about-img-main:hover img { transform: scale(1.04); }
+.about-img-secondary { position: absolute; bottom: -2.5rem; right: -2rem; width: 52%; aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; border: 5px solid var(--cream); box-shadow: var(--shadow-lg); }
+.about-img-secondary img { width: 100%; height: 100%; transition: transform 0.8s var(--ease); }
+.about-img-secondary:hover img { transform: scale(1.06); }
+.about-badge { position: absolute; top: 2rem; left: -1.5rem; background: var(--white); border-radius: var(--radius); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-lg); }
+.badge-number { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--earth); line-height: 1; }
+.badge-text { font-size: 0.82rem; font-weight: 600; color: var(--mid); line-height: 1.3; }
+.about-content { padding: 1rem 0; }
+.about-text { color: var(--mid); font-size: 1.02rem; margin-bottom: 1.25rem; line-height: 1.8; }
+.about-features { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.75rem 0; }
+.feature-pill { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 1rem; background: var(--accent-light); color: var(--forest); font-size: 0.84rem; font-weight: 500; border-radius: 50px; }
+.feature-pill i { color: var(--forest-light); font-size: 0.75rem; }
+
+/* ═══════════ APARTMENTS ═══════════ */
+.apartments-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; }
+.apt-card { background: var(--cream); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform var(--trans), box-shadow var(--trans); border: 1px solid var(--cream-dark); }
+.apt-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+.apt-card-featured { background: var(--earth); color: var(--white); transform: translateY(-12px); border-color: transparent; box-shadow: var(--shadow-xl); }
+.apt-card-featured:hover { transform: translateY(-20px); }
+.apt-card-image { position: relative; aspect-ratio: 3/2; overflow: hidden; }
+.apt-card-image img { width: 100%; height: 100%; transition: transform 0.7s var(--ease); }
+.apt-card:hover .apt-card-image img { transform: scale(1.06); }
+.apt-badge { position: absolute; top: 1rem; left: 1rem; background: var(--gold); color: var(--white); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 50px; }
+.badge-featured { background: linear-gradient(135deg, var(--gold), #E8B84B); }
+.apt-tag { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, rgba(0,0,0,0.7), transparent); color: rgba(255,255,255,0.9); font-size: 0.78rem; font-weight: 500; padding: 1.5rem 1rem 0.75rem; }
+.apt-card-body { padding: 1.5rem; }
+.apt-name { font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; color: var(--earth); margin-bottom: 0.75rem; line-height: 1.2; }
+.apt-card-featured .apt-name { color: var(--sand); }
+.apt-name em { font-style: italic; color: var(--bark); }
+.apt-card-featured .apt-name em { color: var(--gold); }
+.apt-desc { font-size: 0.9rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.25rem; }
+.apt-card-featured .apt-desc { color: rgba(255,255,255,0.65); }
+.apt-amenities { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; border-top: 1px solid var(--cream-dark); padding-top: 1.25rem; }
+.apt-card-featured .apt-amenities { border-color: rgba(255,255,255,0.12); }
+.apt-amenities li { display: flex; align-items: center; gap: 0.65rem; font-size: 0.85rem; color: var(--charcoal); }
+.apt-card-featured .apt-amenities li { color: rgba(255,255,255,0.8); }
+.apt-amenities li i { color: var(--bark); font-size: 0.8rem; width: 16px; flex-shrink: 0; }
+.apt-card-featured .apt-amenities li i { color: var(--gold); }
+.apt-price { display: flex; align-items: center; justify-content: space-between; padding-top: 1.25rem; border-top: 1px solid var(--cream-dark); }
+.apt-card-featured .apt-price { border-color: rgba(255,255,255,0.12); }
+.price-block { display: flex; align-items: baseline; gap: 0.35rem; }
+.price-label { font-size: 0.78rem; color: var(--light); }
+.apt-card-featured .price-label { color: rgba(255,255,255,0.5); }
+.price-amount { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; color: var(--earth); }
+.apt-card-featured .price-amount { color: var(--gold); }
+.price-per { font-size: 0.78rem; color: var(--light); }
+.apt-card-featured .price-per { color: rgba(255,255,255,0.5); }
+.apt-card-featured .btn-primary { background: var(--gold); color: var(--earth); }
+.apt-card-featured .btn-primary:hover { background: #E8B84B; }
+.apartments-note { display: flex; align-items: flex-start; gap: 0.75rem; background: var(--cream-dark); border-radius: var(--radius); padding: 1rem 1.5rem; font-size: 0.84rem; color: var(--mid); }
+.apartments-note i { color: var(--tan); margin-top: 0.15rem; flex-shrink: 0; }
+
+/* ═══════════ APT PHOTO SLIDER ═══════════ */
+.apt-slider { position: relative; aspect-ratio: 3/2; overflow: hidden; }
+.apt-slides { display: flex; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.apt-slides img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; }
+.apt-slide-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.88); border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.85rem; color: var(--earth); box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: all 0.2s; z-index: 3; }
+.apt-slide-btn:hover { background: var(--white); transform: translateY(-50%) scale(1.1); }
+.apt-slide-prev { left: 0.6rem; }
+.apt-slide-next { right: 0.6rem; }
+.apt-slide-dots { position: absolute; bottom: 0.6rem; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 3; }
+.apt-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.55); border: none; cursor: pointer; padding: 0; transition: all 0.2s; }
+.apt-dot.active { background: var(--white); width: 16px; border-radius: 3px; }
+.apt-card-image .apt-badge { z-index: 4; }
+.apt-card-image .apt-tag { z-index: 4; }
+
+/* ═══════════ AMENITIES ═══════════ */
+.amenities-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); align-items: center; }
+.amenities-text { color: var(--mid); font-size: 1.02rem; line-height: 1.8; margin-bottom: 2rem; }
+.amenities-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.am-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--cream); border-radius: var(--radius); transition: all var(--trans); border: 1px solid transparent; }
+.am-item:hover { background: var(--gold-light); border-color: var(--sand); transform: translateX(4px); }
+.am-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--earth); color: var(--gold); border-radius: var(--radius-sm); font-size: 0.9rem; flex-shrink: 0; }
+.am-info { display: flex; flex-direction: column; gap: 0.15rem; }
+.am-info strong { font-size: 0.88rem; font-weight: 600; color: var(--charcoal); }
+.am-info span { font-size: 0.78rem; color: var(--mid); line-height: 1.4; }
+.amenities-image { position: relative; border-radius: var(--radius-lg); overflow: visible; }
+.amenities-image img { width: 100%; aspect-ratio: 4/5; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); object-fit: cover; }
+.amenities-float-card { position: absolute; bottom: -1.5rem; left: -2rem; background: var(--white); border-radius: var(--radius); padding: 1.1rem 1.4rem; display: flex; align-items: center; gap: 0.85rem; box-shadow: var(--shadow-lg); }
+.amenities-float-card i { font-size: 1.5rem; color: var(--gold); }
+.amenities-float-card strong { display: block; font-size: 0.9rem; font-weight: 700; color: var(--earth); }
+.amenities-float-card span { font-size: 0.78rem; color: var(--mid); }
+
+/* ═══════════ EXPERIENCES ═══════════ */
+.exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+.exp-card { background: var(--cream); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform var(--trans), box-shadow var(--trans); border: 1px solid var(--cream-dark); }
+.exp-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.exp-img { aspect-ratio: 16/9; overflow: hidden; }
+.exp-img img { width: 100%; height: 100%; transition: transform 0.7s var(--ease); }
+.exp-card:hover .exp-img img { transform: scale(1.08); }
+.exp-body { padding: 1.5rem; }
+.exp-icon { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; background: var(--accent-light); color: var(--forest); border-radius: var(--radius-sm); font-size: 1rem; margin-bottom: 0.85rem; }
+.exp-body h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--earth); margin-bottom: 0.6rem; }
+.exp-body p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
+
+/* ═══════════ GALLERY ═══════════ */
+.gallery-masonry { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto; gap: 0.5rem; margin-top: 3rem; }
+.gal-item { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 1; }
+.gal-tall { grid-row: span 2; aspect-ratio: auto; }
+.gal-wide { grid-column: span 2; aspect-ratio: 2/1; }
+.gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.gal-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.6), transparent); opacity: 0; transition: opacity var(--trans); display: flex; align-items: flex-end; padding: 1.25rem; }
+.gal-overlay span { color: var(--white); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; }
+.gal-item:hover img { transform: scale(1.07); }
+.gal-item:hover .gal-overlay { opacity: 1; }
+
+/* ═══════════ TESTIMONIALS ═══════════ */
+.testimonials-slider { overflow: hidden; margin-bottom: 2rem; }
+.testimonials-track { display: flex; transition: transform 0.5s var(--ease); }
+.testi-card { flex: 0 0 100%; max-width: 100%; background: var(--cream); border-radius: var(--radius-lg); padding: clamp(2rem, 4vw, 3rem); border: 1px solid var(--cream-dark); box-shadow: var(--shadow-sm); }
+.testi-stars { font-size: 1.2rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 1.25rem; }
+.testi-text { font-family: var(--font-alt); font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--charcoal); line-height: 1.8; font-style: italic; margin-bottom: 1.75rem; max-width: 800px; }
+.testi-author { display: flex; align-items: center; gap: 1rem; }
+.testi-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--earth); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; flex-shrink: 0; }
+.testi-author strong { display: block; font-size: 0.95rem; font-weight: 600; color: var(--charcoal); }
+.testi-author span { font-size: 0.82rem; color: var(--light); }
+.testi-controls { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
+.testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--sand); color: var(--bark); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all var(--trans); }
+.testi-btn:hover { background: var(--earth); border-color: var(--earth); color: var(--white); }
+.testi-dots { display: flex; gap: 0.5rem; }
+.testi-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sand); border: none; cursor: pointer; transition: all var(--trans); }
+.testi-dot.active { background: var(--earth); width: 24px; border-radius: 4px; }
+
+/* ═══════════ BOOKING ═══════════ */
+.booking { background: linear-gradient(135deg, var(--earth) 0%, #3D2518 100%); color: var(--white); }
+.booking-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
+.booking .section-eyebrow { color: var(--gold); }
+.booking .section-title { color: var(--cream); }
+.booking .section-title::after { background: linear-gradient(90deg, var(--gold), rgba(196,160,84,0.4)); }
+.booking-text { color: rgba(255,255,255,0.7); font-size: 1.02rem; line-height: 1.8; margin-bottom: 2rem; }
+.booking-highlights { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2.5rem; }
+.bh-item { display: flex; align-items: center; gap: 0.85rem; font-size: 0.92rem; color: rgba(255,255,255,0.85); }
+.bh-item i { color: var(--gold); font-size: 1rem; width: 20px; }
+.booking-payment { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+.payment-title { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; }
+.payment-methods { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.pay-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+.payment-note { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+.booking-form-wrap { position: relative; }
+.booking-form, .booking-success { background: var(--white); border-radius: var(--radius-lg); padding: clamp(1.75rem, 4vw, 2.5rem); box-shadow: var(--shadow-xl); }
+.form-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--earth); margin-bottom: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0; }
+.form-group-full { grid-column: 1 / -1; margin-bottom: 0.5rem; }
+.form-group label { font-size: 0.82rem; font-weight: 600; color: var(--charcoal); letter-spacing: 0.02em; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem 1rem; border: 1.5px solid var(--cream-dark); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; color: var(--charcoal); background: var(--cream); transition: all var(--trans); outline: none; -webkit-appearance: none; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--bark); background: var(--white); box-shadow: 0 0 0 3px rgba(92,61,46,0.1); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238B6B4A'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 20px; padding-right: 2.5rem; }
+.booking-summary { background: var(--gold-light); border: 1px solid var(--sand); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: var(--earth); }
+.booking-summary strong { display: block; font-weight: 700; margin-bottom: 0.35rem; }
+.form-note { font-size: 0.78rem; color: var(--light); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
+.booking-success { text-align: center; padding: 3rem; }
+.success-icon { font-size: 3.5rem; color: var(--whatsapp); margin-bottom: 1rem; }
+.booking-success h3 { font-family: var(--font-display); font-size: 1.75rem; color: var(--earth); margin-bottom: 0.75rem; }
+.booking-success p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+
+/* ═══════════ FAQ ═══════════ */
+.faq-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(3rem, 6vw, 5rem); align-items: start; }
+.faq-sub { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin: 1rem 0 1.5rem; }
+.faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item { border: 1px solid var(--cream-dark); border-radius: var(--radius); overflow: hidden; background: var(--white); transition: box-shadow var(--trans); }
+.faq-item:has(.faq-question[aria-expanded="true"]) { box-shadow: var(--shadow-md); border-color: var(--sand); }
+.faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.4rem; font-size: 0.95rem; font-weight: 600; color: var(--charcoal); text-align: left; gap: 1rem; transition: color var(--trans); }
+.faq-question:hover { color: var(--earth); }
+.faq-icon { flex-shrink: 0; color: var(--bark); font-size: 0.8rem; transition: transform var(--trans); }
+.faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+.faq-answer.open { max-height: 300px; }
+.faq-answer p { padding: 0 1.4rem 1.1rem; font-size: 0.9rem; color: var(--mid); line-height: 1.75; border-top: 1px solid var(--cream-dark); padding-top: 0.85rem; }
+
+/* ═══════════ CONTACT ═══════════ */
+.contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
+.contact-text { color: var(--mid); font-size: 1.02rem; line-height: 1.8; margin-bottom: 2rem; }
+.contact-channels { display: flex; flex-direction: column; gap: 1rem; }
+.contact-channel { display: flex; align-items: center; gap: 1.1rem; padding: 1.1rem 1.4rem; border-radius: var(--radius); border: 1.5px solid var(--cream-dark); background: var(--white); transition: all var(--trans); text-decoration: none; }
+.contact-channel:hover { transform: translateX(6px); box-shadow: var(--shadow-md); }
+.contact-channel.whatsapp:hover { border-color: var(--whatsapp); }
+.contact-channel.instagram:hover { border-color: #E1306C; }
+.cc-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.whatsapp .cc-icon { background: #E7FAF0; color: var(--whatsapp); }
+.instagram .cc-icon { background: #FCE8EF; color: #E1306C; }
+.location .cc-icon { background: var(--gold-light); color: var(--bark); }
+.cc-info { display: flex; flex-direction: column; gap: 0.1rem; }
+.cc-info strong { font-size: 0.95rem; font-weight: 600; color: var(--charcoal); }
+.cc-info span { font-size: 0.87rem; color: var(--charcoal); }
+.cc-info em { font-size: 0.78rem; color: var(--light); font-style: normal; }
+.contact-form-wrap { position: relative; }
+.contact-form, .contact-success { background: var(--cream); border-radius: var(--radius-lg); padding: clamp(1.75rem, 4vw, 2.5rem); border: 1px solid var(--cream-dark); box-shadow: var(--shadow-sm); }
+.contact-form .form-group { margin-bottom: 1rem; }
+.contact-success { text-align: center; padding: 3rem; background: var(--white); }
+
+/* ═══════════ FOOTER ═══════════ */
+.footer { background: var(--coal); color: var(--white); padding: 4rem 0 0; }
+.footer-top { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.footer-logo { color: var(--white); margin-bottom: 1rem; display: flex; }
+.footer-tagline { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1.5rem; }
+.footer-social { display: flex; gap: 0.75rem; }
+.footer-social a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all var(--trans); }
+.footer-social a:hover { background: var(--bark); color: var(--white); transform: translateY(-3px); }
+.footer-links h4 { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tan); margin-bottom: 1.25rem; }
+.footer-links ul { display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-links li a, .footer-links li span { font-size: 0.87rem; color: rgba(255,255,255,0.55); transition: color var(--trans); }
+.footer-links li a:hover { color: var(--white); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; font-size: 0.82rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem; }
+
+/* ═══════════ WHATSAPP FLOAT ═══════════ */
+.whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; width: 60px; height: 60px; background: var(--whatsapp); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; color: var(--white); box-shadow: 0 6px 24px rgba(37,211,102,0.45); transition: all var(--trans); animation: waPulse 3s ease-in-out infinite; }
+.whatsapp-float:hover { transform: scale(1.12); box-shadow: 0 10px 36px rgba(37,211,102,0.55); animation: none; }
+.wa-tooltip { position: absolute; right: 70px; background: var(--coal); color: var(--white); font-size: 0.82rem; font-weight: 600; padding: 0.4rem 0.85rem; border-radius: 50px; white-space: nowrap; opacity: 0; transform: translateX(8px); transition: all var(--trans); pointer-events: none; }
+.wa-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-left-color: var(--coal); }
+.whatsapp-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+@keyframes waPulse { 0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.45); } 50% { box-shadow: 0 6px 40px rgba(37,211,102,0.7); } }
+
+/* ═══════════ LIGHTBOX ═══════════ */
+.lightbox { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: all var(--trans); }
+.lightbox.active { opacity: 1; visibility: visible; }
+.lightbox-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1999; opacity: 0; visibility: hidden; transition: all var(--trans); cursor: pointer; }
+.lightbox-overlay.active { opacity: 1; visibility: visible; }
+.lb-img-wrap { position: relative; z-index: 2001; max-width: 90vw; max-height: 85vh; display: flex; flex-direction: column; align-items: center; }
+.lb-img-wrap img { max-width: 90vw; max-height: 80vh; border-radius: var(--radius); box-shadow: var(--shadow-xl); object-fit: contain; }
+#lbCaption { margin-top: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.9rem; text-align: center; }
+.lb-close, .lb-prev, .lb-next { position: fixed; z-index: 2002; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1rem; border: 1px solid rgba(255,255,255,0.2); transition: all var(--trans); backdrop-filter: blur(6px); }
+.lb-close { top: 1.5rem; right: 1.5rem; font-size: 1.2rem; }
+.lb-prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
+.lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.25); }
+
+/* ═══════════ ANIMATIONS ═══════════ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(32px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 1100px) {
+  .apartments-grid { grid-template-columns: 1fr 1fr; }
+  .apt-card-featured { transform: none; }
+  .exp-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 900px) {
+  .nav-menu { position: fixed; top: 76px; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 1.5rem 1.5rem 2rem; gap: 0.25rem; border-bottom: 1px solid var(--cream-dark); box-shadow: var(--shadow-lg); transform: translateY(-120%); opacity: 0; transition: all var(--trans); z-index: 999; }
+  .nav-menu.open { transform: translateY(0); opacity: 1; }
+  .nav-link { color: var(--charcoal); width: 100%; text-align: center; }
+  .nav-cta { width: 100%; text-align: center; margin: 0.5rem 0 0; }
+  .nav-hamburger { display: flex; }
+  .about-grid, .amenities-inner, .booking-inner, .faq-inner, .contact-inner { grid-template-columns: 1fr; }
+  .about-images { order: -1; min-height: 400px; }
+  .about-img-secondary { display: none; }
+  .about-badge { top: 1rem; left: 1rem; }
+  .amenities-image { display: none; }
+  .amenities-list { grid-template-columns: 1fr; }
+  .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+  .gal-tall { grid-row: span 1; aspect-ratio: 1; }
+  .gal-wide { grid-column: span 1; aspect-ratio: 1; }
+}
+
+@media (max-width: 700px) {
+  .apartments-grid { grid-template-columns: 1fr; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .valor-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .valor-item:last-child { border-bottom: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .gallery-masonry { grid-template-columns: 1fr; }
+  .gal-tall, .gal-wide { grid-row: span 1; grid-column: span 1; aspect-ratio: 4/3; }
+  .lb-prev { left: 0.5rem; }
+  .lb-next { right: 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+}
+
+/* ─── AVAILABILITY CALENDAR ─── */
+.av-apt-btn {
+  padding: 0.5rem 1.25rem; border-radius: 30px; border: 2px solid var(--sand);
+  background: transparent; font-family: var(--font-body); font-size: 0.85rem;
+  font-weight: 600; color: var(--earth); cursor: pointer; transition: all 0.2s ease;
+}
+.av-apt-btn:hover { border-color: var(--bark); background: var(--cream-dark); }
+.av-apt-btn.active { background: var(--earth); color: var(--cream); border-color: var(--earth); }
+.av-calendar-wrap {
+  background: var(--white); border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.09); overflow: hidden;
+}
+.av-cal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem; background: var(--earth); color: var(--cream);
+}
+.av-cal-title { font-family: var(--font-heading); font-size: 1rem; font-style: italic; }
+.av-nav {
+  background: rgba(255,255,255,0.15); border: none; color: var(--cream);
+  width: 30px; height: 30px; border-radius: 8px; cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+}
+.av-nav:hover { background: rgba(255,255,255,0.3); }
+.av-cal-days {
+  display: grid; grid-template-columns: repeat(7, 1fr); background: var(--cream-dark);
+}
+.av-day-name { padding: 0.5rem 0; text-align: center; font-size: 0.68rem; font-weight: 700; color: var(--mid); text-transform: uppercase; }
+.av-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); padding: 0.5rem; gap: 3px; }
+.av-cell { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 600; transition: all 0.15s; }
+.av-cell.av-empty { visibility: hidden; }
+.av-cell.av-free { background: #EAFAF1; color: #1E8449; cursor: default; }
+.av-cell.av-free:hover { background: #D5F5E3; }
+.av-cell.av-blocked { background: #FDEDEC; color: #C0392B; text-decoration: line-through; cursor: not-allowed; }
+.av-cell.av-past { background: transparent; color: #C5C8CA; cursor: default; }
+.av-legend { display: flex; justify-content: center; gap: 1.25rem; padding: 0.85rem 1rem 1rem; flex-wrap: wrap; }
+.av-legend span { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--mid); }
+.av-legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.av-legend-dot.free { background: #1E8449; }
+.av-legend-dot.blocked { background: #C0392B; }
+.av-legend-dot.past { background: #C5C8CA; }
+
+/* ─── ADMIN LINK ─── */
+.admin-link-pill {
+  position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 200;
+  background: var(--earth); color: var(--cream) !important; padding: 0.55rem 1rem;
+  border-radius: 30px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25); display: flex; align-items: center; gap: 0.5rem;
+  transition: all 0.2s; text-decoration: none !important; opacity: 0.85;
+}
+.admin-link-pill:hover { opacity: 1; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- Admin access pill -->
+  <a href="admin/index.html" class="admin-link-pill" title="Acceso al panel de administración">
+    <i class="fa-solid fa-shield-halved"></i> Admin
+  </a>
+
+  <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-mark">✦</span>
+        <span class="logo-text">Pucon<strong>Hygge</strong>Stays</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="#departamentos" class="nav-link">Departamentos</a></li>
+        <li><a href="#amenities" class="nav-link">Amenities</a></li>
+        <li><a href="#experiencias" class="nav-link">Experiencias</a></li>
+        <li><a href="#galeria" class="nav-link">Galería</a></li>
+        <li><a href="#disponibilidad" class="nav-link">Disponibilidad</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li><a href="#reserva" class="nav-cta">Reservar</a></li>
+      </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg">
+      <img src="images/207/08-terraza-vista-volcan.jpg" alt="Pucón Chile paisaje" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content container">
+      <p class="hero-eyebrow">🌿 Sur de Chile · Pucón</p>
+      <h1 class="hero-title">Donde el volcán<br/><em>se convierte en hogar</em></h1>
+      <p class="hero-subtitle">Departamentos con alma hygge, diseñados para el descanso profundo. Piscina, gimnasio, vistas al Volcán Villarrica y todo Pucón a tus pies.</p>
+      <div class="hero-actions">
+        <a href="#reserva" class="btn btn-primary">Reservar ahora</a>
+        <a href="#departamentos" class="btn btn-ghost">Ver departamentos</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>3</strong><span>Departamentos</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>100%</strong><span>Equipados</span></div>
+      </div>
+    </div>
+    <a href="#nosotros" class="hero-scroll" aria-label="Scroll">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">Descubrir</span>
+    </a>
+  </section>
+
+  <!-- ═══════════════════ VALOR STRIP ═══════════════════ -->
+  <section class="valor-strip">
+    <div class="container">
+      <div class="valor-grid">
+        <div class="valor-item"><i class="fa-solid fa-fire-flame-curved"></i><span>Calidez hygge</span></div>
+        <div class="valor-item"><i class="fa-solid fa-water"></i><span>Piscina exterior</span></div>
+        <div class="valor-item"><i class="fa-solid fa-dumbbell"></i><span>Gimnasio equipado</span></div>
+        <div class="valor-item"><i class="fa-solid fa-utensils"></i><span>Cocina completa</span></div>
+        <div class="valor-item"><i class="fa-solid fa-umbrella-beach"></i><span>Acceso privado playa</span></div>
+        <div class="valor-item"><i class="fa-solid fa-table-tennis-paddle-ball"></i><span>Cancha de tenis</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ NOSOTROS ═══════════════════ -->
+  <section class="about section" id="nosotros">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images">
+          <div class="about-img-main">
+            <img src="images/207/02-sala-living-2.jpg" alt="Interior hygge" />
+          </div>
+          <div class="about-img-secondary">
+            <img src="images/201/01-living-sala.jpg" alt="Pucón volcán" />
+          </div>
+          <div class="about-badge">
+            <span class="badge-number">3</span>
+            <span class="badge-text">deptos<br/>hygge</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <p class="section-eyebrow">Sobre nosotros</p>
+          <h2 class="section-title">La filosofía<br/><em>Hygge</em> en Pucón</h2>
+          <p class="about-text">Hygge (pronunciado <em>hoo-ga</em>) es el arte danés de crear calidez, bienestar y conexión genuina. En Pucon Hygge Stays llevamos esa filosofía al sur de Chile: departamentos pensados para que descanses de verdad, cocines lo que quieras, y vivas Pucón como si fuera tu hogar.</p>
+          <p class="about-text">Nuestros departamentos están ubicados en un condominio con piscina, gimnasio, lavandería, salón de eventos y cancha deportiva. A minutos del Lago Villarrica, del volcán, de los mejores restaurantes y de la playa de Pucón.</p>
+          <div class="about-features">
+            <div class="feature-pill"><i class="fa-solid fa-check"></i> A pasos del lago</div>
+            <div class="feature-pill"><i class="fa-solid fa-check"></i> Condominio seguro 24/7</div>
+            <div class="feature-pill"><i class="fa-solid fa-check"></i> Check-in flexible</div>
+            <div class="feature-pill"><i class="fa-solid fa-check"></i> Mascota bienvenida (consultar)</div>
+          </div>
+          <a href="#departamentos" class="btn btn-primary">Ver departamentos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ DEPARTAMENTOS ═══════════════════ -->
+  <section class="apartments section section-alt" id="departamentos">
+    <div class="container">
+      <div class="section-header center">
+        <p class="section-eyebrow">Nuestros espacios</p>
+        <h2 class="section-title">Tres departamentos,<br/><em>una experiencia única</em></h2>
+        <p class="section-subtitle">Cada uno tiene su propio carácter, pero todos comparten la misma esencia: calidez, comodidad y vistas que enamoran.</p>
+      </div>
+      <div class="apartments-grid">
+        <!-- DEPTO 201 — hasta 5 personas -->
+        <article class="apt-card">
+          <div class="apt-card-image">
+            <div class="apt-slider" id="slider-201">
+              <div class="apt-slides">
+                <img src="images/201/01-living-sala.jpg" alt="Sala de estar Depto 201" />
+                <img src="images/201/02-dormitorio-principal.jpg" alt="Dormitorio principal Depto 201" />
+                <img src="images/201/03-cocina-comedor.jpg" alt="Cocina comedor Depto 201" />
+                <img src="images/201/04-living-cocina.jpg" alt="Living cocina abierta Depto 201" />
+                <img src="images/201/05-dormitorio-literas.jpg" alt="Dormitorio literas Depto 201" />
+                <img src="images/201/06-terraza.jpg" alt="Terraza Depto 201" />
+                <img src="images/201/07-bano.jpg" alt="Baño Depto 201" />
+                <img src="images/201/08-pasillo-macrame.jpg" alt="Pasillo macramé Depto 201" />
+              </div>
+              <button class="apt-slide-btn apt-slide-prev" onclick="aptSlide('slider-201',-1)"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="apt-slide-btn apt-slide-next" onclick="aptSlide('slider-201',1)"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="apt-slide-dots" id="dots-201"></div>
+            </div>
+            <div class="apt-badge">5 personas</div>
+            <div class="apt-tag">2 dorm · Hasta 5 personas</div>
+          </div>
+          <div class="apt-card-body">
+            <h3 class="apt-name">Departamento <em>Volcán</em> <span style="font-size:0.75rem;color:var(--mid);font-family:var(--font-body);font-weight:500;">#201</span></h3>
+            <p class="apt-desc">Acogedor departamento para hasta 5 personas. Cocina equipada con isla, sala de estar con chimenea decorativa, dormitorio principal con vista al bosque y dormitorio con literas.</p>
+            <ul class="apt-amenities">
+              <li><i class="fa-solid fa-bed"></i> 1 cama matrimonial + litera doble</li>
+              <li><i class="fa-solid fa-bath"></i> 1 baño completo</li>
+              <li><i class="fa-solid fa-kitchen-set"></i> Cocina con isla central</li>
+              <li><i class="fa-solid fa-tv"></i> Smart TV</li>
+              <li><i class="fa-solid fa-sun"></i> Terraza privada</li>
+            </ul>
+            <div class="apt-price">
+              <div class="price-block">
+                <span class="price-label">Desde</span>
+                <span class="price-amount">$75.000</span>
+                <span class="price-per">/ noche</span>
+              </div>
+              <a href="#reserva" class="btn btn-primary btn-sm" data-apt="Volcán">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- DEPTO 207 — hasta 6 personas -->
+        <article class="apt-card apt-card-featured">
+          <div class="apt-card-image">
+            <div class="apt-slider" id="slider-207">
+              <div class="apt-slides">
+                <img src="images/207/01-sala-living-1.jpg" alt="Sala de estar Depto 207" />
+                <img src="images/207/02-sala-living-2.jpg" alt="Living vista balcón Depto 207" />
+                <img src="images/207/03-dormitorio-principal.jpg" alt="Dormitorio principal Depto 207" />
+                <img src="images/207/04-dormitorio-2.jpg" alt="Segundo dormitorio Depto 207" />
+                <img src="images/207/05-dormitorio-3-twin.jpg" alt="Segundo dormitorio (camas twin) Depto 207" />
+                <img src="images/207/06-cocina-comedor.jpg" alt="Cocina comedor Depto 207" />
+                <img src="images/207/07-terraza.jpg" alt="Terraza con vista Depto 207" />
+                <img src="images/207/08-terraza-vista-volcan.jpg" alt="Vista montaña desde terraza Depto 207" />
+                <img src="images/207/09-bano.jpg" alt="Baño principal Depto 207" />
+              </div>
+              <button class="apt-slide-btn apt-slide-prev" onclick="aptSlide('slider-207',-1)"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="apt-slide-btn apt-slide-next" onclick="aptSlide('slider-207',1)"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="apt-slide-dots" id="dots-207"></div>
+            </div>
+            <div class="apt-badge badge-featured">Premium · Más grande</div>
+            <div class="apt-tag">3 dorm · Hasta 6 personas</div>
+          </div>
+          <div class="apt-card-body">
+            <h3 class="apt-name">Departamento <em>Lago</em> <span style="font-size:0.75rem;color:rgba(255,255,255,0.55);font-family:var(--font-body);font-weight:500;">#207</span></h3>
+            <p class="apt-desc">El más espacioso: 3 dormitorios con capacidad para 6 personas, terraza con vista al bosque y volcán, sala amplia y cocina totalmente equipada.</p>
+            <ul class="apt-amenities">
+              <li><i class="fa-solid fa-bed"></i> 1 matrimonial + litera + 2 singles</li>
+              <li><i class="fa-solid fa-bath"></i> 1 baño completo</li>
+              <li><i class="fa-solid fa-kitchen-set"></i> Cocina equipada + mesón</li>
+              <li><i class="fa-solid fa-tv"></i> Smart TV</li>
+              <li><i class="fa-solid fa-sun"></i> Terraza con vista al volcán</li>
+            </ul>
+            <div class="apt-price">
+              <div class="price-block">
+                <span class="price-label">Desde</span>
+                <span class="price-amount">$95.000</span>
+                <span class="price-per">/ noche</span>
+              </div>
+              <a href="#reserva" class="btn btn-primary btn-sm" data-apt="Lago">Reservar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="apt-card">
+          <div class="apt-card-image">
+            <img src="images/201/07-bano.jpg" alt="Departamento Bosque" />
+            <div class="apt-tag">2 dorm · Hasta 3 personas</div>
+          </div>
+          <div class="apt-card-body">
+            <h3 class="apt-name">Departamento <em>Bosque</em></h3>
+            <p class="apt-desc">Perfecto para parejas o familias pequeñas. Diseño hygge puro con colores tierra, textiles nórdicos y una atmósfera que invita a quedarse.</p>
+            <ul class="apt-amenities">
+              <li><i class="fa-solid fa-bed"></i> 1 matrimonial + 1 individual</li>
+              <li><i class="fa-solid fa-bath"></i> 1 baño completo</li>
+              <li><i class="fa-solid fa-kitchen-set"></i> Cocina equipada</li>
+              <li><i class="fa-solid fa-tv"></i> Smart TV + Netflix</li>
+              <li><i class="fa-solid fa-wind"></i> Calefacción central</li>
+            </ul>
+            <div class="apt-price">
+              <div class="price-block">
+                <span class="price-label">Desde</span>
+                <span class="price-amount">$65.000</span>
+                <span class="price-per">/ noche</span>
+              </div>
+              <a href="#reserva" class="btn btn-primary btn-sm" data-apt="Bosque">Reservar</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="apartments-note">
+        <i class="fa-solid fa-circle-info"></i>
+        <p>Tarifas en pesos chilenos (CLP). Incluyen IVA. Pueden variar según temporada. Mínimo 2 noches. Consulta disponibilidad antes de reservar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ AMENITIES ═══════════════════ -->
+  <section class="amenities section" id="amenities">
+    <div class="container">
+      <div class="amenities-inner">
+        <div class="amenities-content">
+          <p class="section-eyebrow">Áreas comunes</p>
+          <h2 class="section-title">No solo un<br/><em>departamento</em></h2>
+          <p class="amenities-text">Vivir en Pucon Hygge Stays es tener acceso a todo un ecosistema diseñado para el bienestar. Todas las instalaciones están disponibles para nuestros huéspedes sin costo adicional.</p>
+          <div class="amenities-list">
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-water"></i></div><div class="am-info"><strong>Piscina exterior</strong><span>De temporada, para relajarte bajo el volcán</span></div></div>
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-dumbbell"></i></div><div class="am-info"><strong>Gimnasio equipado</strong><span>Máquinas cardio y pesas, disponible 24/7</span></div></div>
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-shirt"></i></div><div class="am-info"><strong>Lavandería</strong><span>Lavadoras y secadoras en el edificio</span></div></div>
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-fire"></i></div><div class="am-info"><strong>Salón de eventos con parrilla</strong><span>Espacio cubierto para asados y reuniones</span></div></div>
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-futbol"></i></div><div class="am-info"><strong>Cancha deportiva</strong><span>Tenis y básquetbol al aire libre</span></div></div>
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-shield-halved"></i></div><div class="am-info"><strong>Seguridad 24/7</strong><span>Conserje y acceso controlado</span></div></div>
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-car"></i></div><div class="am-info"><strong>Estacionamiento</strong><span>Disponible en el condominio (consultar)</span></div></div>
+            <div class="am-item"><div class="am-icon"><i class="fa-solid fa-elevator"></i></div><div class="am-info"><strong>Ascensor</strong><span>Acceso cómodo a todos los pisos</span></div></div>
+          </div>
+        </div>
+        <div class="amenities-image">
+          <img src="images/comunes/juegos-infantiles.jpg" alt="Amenidades del condominio" />
+          <div class="amenities-float-card">
+            <i class="fa-solid fa-star"></i>
+            <div><strong>Áreas comunes</strong><span>incluidas en tu estadía</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ EXPERIENCIAS ═══════════════════ -->
+  <section class="experiences section section-alt" id="experiencias">
+    <div class="container">
+      <div class="section-header center">
+        <p class="section-eyebrow">Más que alojarse</p>
+        <h2 class="section-title">Vive Pucón<br/><em>en profundidad</em></h2>
+        <p class="section-subtitle">Nuestros departamentos son la base perfecta para explorar todo lo que el sur de Chile tiene para ofrecer.</p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card">
+          <div class="exp-img"><img src="images/207/07-terraza.jpg" alt="Lago Villarrica" /></div>
+          <div class="exp-body"><div class="exp-icon"><i class="fa-solid fa-water"></i></div><h3>Lago Villarrica</h3><p>Nada, kayak, paddle surf o simplemente relájate en la playa más famosa del sur. A minutos de nuestros departamentos.</p></div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-img"><img src="images/comunes/ski-telecabina.jpg" alt="Volcán Villarrica" /></div>
+          <div class="exp-body"><div class="exp-icon"><i class="fa-solid fa-mountain"></i></div><h3>Volcán Villarrica</h3><p>Sube al volcán activo más famoso de Chile con guías especializados. Una experiencia que te cambia la perspectiva.</p></div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-img"><img src="images/201/06-terraza.jpg" alt="Termas" /></div>
+          <div class="exp-body"><div class="exp-icon"><i class="fa-solid fa-hot-tub-person"></i></div><h3>Termas naturales</h3><p>A 30 minutos de las Termas Geométricas y otras aguas termales. El mejor complemento para una estadía de descanso total.</p></div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-img"><img src="images/207/14-dormitorio-detalle.jpg" alt="Senderismo Pucón" /></div>
+          <div class="exp-body"><div class="exp-icon"><i class="fa-solid fa-person-hiking"></i></div><h3>Parques y senderismo</h3><p>Huerquehue, Villarrica y decenas de senderos que cruzan bosques de araucarias milenarias. La naturaleza a tu ritmo.</p></div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-img"><img src="images/207/13-decoracion.jpg" alt="Centro de Pucón" /></div>
+          <div class="exp-body"><div class="exp-icon"><i class="fa-solid fa-fork-knife"></i></div><h3>Gastronomía y vida nocturna</h3><p>Pucón tiene una escena gastronómica vibrante: desde cocina de autor hasta cervecerías artesanales y mercados locales.</p></div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-img"><img src="images/comunes/lavanderia.jpg" alt="Ski Pucón" /></div>
+          <div class="exp-body"><div class="exp-icon"><i class="fa-solid fa-person-skiing"></i></div><h3>Ski &amp; Snowboard</h3><p>En invierno, el Centro de Ski Pucón opera sobre las laderas del volcán. Equipos en renta y clases para todos los niveles.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ GALERÍA ═══════════════════ -->
+  <section class="gallery section" id="galeria">
+    <div class="container">
+      <div class="section-header center">
+        <p class="section-eyebrow">Imágenes</p>
+        <h2 class="section-title">Un vistazo a<br/><em>tu próxima estadía</em></h2>
+      </div>
+    </div>
+    <div class="gallery-masonry">
+      <div class="gal-item gal-tall"><img src="images/207/08-terraza-vista-volcan.jpg" alt="Vista montaña volcán" /><div class="gal-overlay"><span>Vista volcán · Depto 207</span></div></div>
+      <div class="gal-item"><img src="images/201/01-living-sala.jpg" alt="Living Depto 201" /><div class="gal-overlay"><span>Living acogedor · Depto 201</span></div></div>
+      <div class="gal-item"><img src="images/207/01-sala-living-1.jpg" alt="Sala de estar Depto 207" /><div class="gal-overlay"><span>Sala de estar · Depto 207</span></div></div>
+      <div class="gal-item gal-wide"><img src="images/201/03-cocina-comedor.jpg" alt="Cocina con isla Depto 201" /><div class="gal-overlay"><span>Cocina con isla · Depto 201</span></div></div>
+      <div class="gal-item"><img src="images/207/07-terraza.jpg" alt="Terraza Depto 207" /><div class="gal-overlay"><span>Terraza · Depto 207</span></div></div>
+      <div class="gal-item gal-tall"><img src="images/201/02-dormitorio-principal.jpg" alt="Dormitorio con vista Depto 201" /><div class="gal-overlay"><span>Dormitorio principal · Depto 201</span></div></div>
+      <div class="gal-item"><img src="images/comunes/juegos-infantiles.jpg" alt="Área común de juegos" /><div class="gal-overlay"><span>Juegos · Área común</span></div></div>
+      <div class="gal-item"><img src="images/comunes/lavanderia.jpg" alt="Lavandería del edificio" /><div class="gal-overlay"><span>Lavandería · Edificio</span></div></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TESTIMONIOS ═══════════════════ -->
+  <section class="testimonials section section-alt" id="testimonios">
+    <div class="container">
+      <div class="section-header center">
+        <p class="section-eyebrow">Lo que dicen nuestros huéspedes</p>
+        <h2 class="section-title">Historias que<br/><em>nos inspiran</em></h2>
+      </div>
+      <div class="testimonials-slider" id="testimonialsSlider">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"No podíamos creer lo equipado que estaba el departamento. Llegamos y era exactamente como las fotos, cálido, limpio y con una vista al volcán que nos dejó sin palabras. Volvemos el próximo verano."</p>
+            <div class="testi-author"><div class="testi-avatar">F</div><div><strong>Fernanda &amp; Matías</strong><span>Santiago · Diciembre 2024</span></div></div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"La atención fue increíble. Llegamos tarde y el check-in fue súper simple. El departamento es precioso, tiene ese estilo nórdico que tanto nos gusta, y la piscina del edificio fue un regalo. Pucón en plena temporada, sin pagar hotel carísimo."</p>
+            <div class="testi-author"><div class="testi-avatar">C</div><div><strong>Constanza P.</strong><span>Concepción · Enero 2025</span></div></div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"Fuimos 5 personas al depto grande y nos sobró espacio. La cocina estaba perfecta para cocinar, el salón con parrilla fue el punto alto del viaje. Muy recomendado para grupos o familias."</p>
+            <div class="testi-author"><div class="testi-avatar">R</div><div><strong>Rodrigo V.</strong><span>Temuco · Febrero 2025</span></div></div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"Fuimos de luna de miel y fue perfecto. El departamento Bosque tiene una atmósfera muy íntima y acogedora. La respuesta por WhatsApp fue inmediata. ¡Volveremos!"</p>
+            <div class="testi-author"><div class="testi-avatar">A</div><div><strong>Andrea &amp; Tomás</strong><span>Buenos Aires · Marzo 2025</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-controls">
+        <button class="testi-btn" id="testiPrev" aria-label="Anterior"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="testi-dots" id="testiDots"></div>
+        <button class="testi-btn" id="testiNext" aria-label="Siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ DISPONIBILIDAD ═══════════════════ -->
+  <section class="section" id="disponibilidad" style="background:var(--cream);">
+    <div class="container">
+      <div class="section-header center" style="margin-bottom:1.5rem;">
+        <p class="section-eyebrow">Disponibilidad en tiempo real</p>
+        <h2 class="section-title">Consulta fechas<br/><em>libres</em></h2>
+        <p class="section-subtitle">Calendario actualizado con reservas de todas las plataformas</p>
+      </div>
+      <!-- Apt selector -->
+      <div style="display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <button class="av-apt-btn active" data-apt="volcan" onclick="avCalChangeApt('volcan')">Volcán #201</button>
+        <button class="av-apt-btn" data-apt="lago" onclick="avCalChangeApt('lago')">Lago #207</button>
+        <button class="av-apt-btn" data-apt="bosque" onclick="avCalChangeApt('bosque')">Bosque</button>
+      </div>
+      <div style="max-width:480px;margin:0 auto;">
+        <div id="availabilityCalendar" class="av-calendar-wrap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ RESERVA ═══════════════════ -->
+  <section class="booking section" id="reserva">
+    <div class="container">
+      <div class="booking-inner">
+        <div class="booking-info">
+          <p class="section-eyebrow">Reserva online</p>
+          <h2 class="section-title">Asegura tu<br/><em>estadía ahora</em></h2>
+          <p class="booking-text">Completa el formulario y nos pondremos en contacto contigo en menos de 2 horas para confirmar disponibilidad y enviarte el link de pago seguro.</p>
+          <div class="booking-highlights">
+            <div class="bh-item"><i class="fa-solid fa-clock"></i><span>Confirmación en menos de 2 hrs</span></div>
+            <div class="bh-item"><i class="fa-solid fa-shield-check"></i><span>Pago 100% seguro</span></div>
+            <div class="bh-item"><i class="fa-solid fa-rotate-left"></i><span>Cancelación hasta 72 hrs antes</span></div>
+            <div class="bh-item"><i class="fa-brands fa-whatsapp"></i><span>Atención directa por WhatsApp</span></div>
+          </div>
+          <div class="booking-payment">
+            <p class="payment-title">Medios de pago disponibles</p>
+            <div class="payment-methods">
+              <div class="pay-badge"><i class="fa-solid fa-building-columns"></i> Transferencia</div>
+              <div class="pay-badge"><i class="fa-solid fa-credit-card"></i> Tarjeta (Flow)</div>
+              <div class="pay-badge"><i class="fa-brands fa-paypal"></i> PayPal</div>
+            </div>
+            <p class="payment-note">50% al confirmar · 50% al hacer check-in</p>
+          </div>
+        </div>
+        <div class="booking-form-wrap">
+          <form class="booking-form" id="bookingForm">
+            <h3 class="form-title">Solicitar reserva</h3>
+            <div class="form-row">
+              <div class="form-group"><label for="bookName">Nombre completo *</label><input type="text" id="bookName" name="name" placeholder="Tu nombre" required /></div>
+              <div class="form-group"><label for="bookEmail">Correo electrónico *</label><input type="email" id="bookEmail" name="email" placeholder="tu@email.com" required /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="bookPhone">WhatsApp / teléfono *</label><input type="tel" id="bookPhone" name="phone" placeholder="+56 9 ..." required /></div>
+              <div class="form-group">
+                <label for="bookApt">Departamento *</label>
+                <select id="bookApt" name="apartment" required>
+                  <option value="">Selecciona...</option>
+                  <option value="Volcán">Depto. Volcán (2 dorm · 4 pax)</option>
+                  <option value="Lago">Depto. Lago (3 dorm · 6 pax)</option>
+                  <option value="Bosque">Depto. Bosque (2 dorm · 3 pax)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="bookCheckin">Check-in *</label><input type="date" id="bookCheckin" name="checkin" required /></div>
+              <div class="form-group"><label for="bookCheckout">Check-out *</label><input type="date" id="bookCheckout" name="checkout" required /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bookGuests">N° de huéspedes *</label>
+                <select id="bookGuests" name="guests" required>
+                  <option value="">Selecciona...</option>
+                  <option value="1">1 persona</option>
+                  <option value="2">2 personas</option>
+                  <option value="3">3 personas</option>
+                  <option value="4">4 personas</option>
+                  <option value="5">5 personas</option>
+                  <option value="6">6 personas</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="bookSource">¿Cómo nos encontraste?</label>
+                <select id="bookSource" name="source">
+                  <option value="">Selecciona...</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="recomendacion">Recomendación</option>
+                  <option value="google">Google</option>
+                  <option value="booking">Booking / Airbnb</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group form-group-full">
+              <label for="bookMessage">Comentarios o peticiones especiales</label>
+              <textarea id="bookMessage" name="message" placeholder="¿Alguna petición especial? ¿Viajan con mascotas? ¿Celebran algo?" rows="3"></textarea>
+            </div>
+            <div class="booking-summary" id="bookingSummary" style="display:none">
+              <div class="summary-inner"><strong>Resumen de tu reserva</strong><div id="summaryDetails"></div></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full"><i class="fa-solid fa-paper-plane"></i> Solicitar reserva</button>
+            <p class="form-note">Al enviar aceptas que nos pongamos en contacto contigo por WhatsApp y email para confirmar tu reserva.</p>
+          </form>
+          <div class="booking-success" id="bookingSuccess" style="display:none">
+            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>¡Solicitud enviada!</h3>
+            <p>Recibimos tu solicitud para el <strong id="successApt"></strong>. Te contactaremos en menos de 2 horas por WhatsApp para confirmar disponibilidad.</p>
+            <a href="https://wa.me/56958771006" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Escribirnos ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="faq-inner">
+        <div class="faq-header">
+          <p class="section-eyebrow">Preguntas frecuentes</p>
+          <h2 class="section-title">Todo lo que<br/><em>necesitas saber</em></h2>
+          <p class="faq-sub">¿Tienes una duda que no aparece aquí? Escríbenos por WhatsApp y te respondemos al tiro.</p>
+          <a href="https://wa.me/56958771006?text=Hola%2C%20tengo%20una%20consulta%20sobre%20Pucon%20Hygge%20Stays" target="_blank" class="btn btn-ghost btn-sm"><i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp</a>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Cuál es el horario de check-in y check-out?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>El check-in es desde las 15:00 hrs. El check-out es hasta las 11:00 hrs. Si necesitas un horario diferente, contáctanos con anticipación e intentaremos acomodarnos según disponibilidad.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Se aceptan mascotas?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>En algunos casos sí, con un cargo adicional de limpieza. Contáctanos antes de reservar para evaluar y coordinar los detalles.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Cuántas noches es el mínimo de estadía?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>El mínimo es de 2 noches. En temporada alta (diciembre a marzo) se puede requerir un mínimo de 3 noches. Consulta disponibilidad directamente con nosotros.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Cómo funciona el proceso de pago?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>Una vez confirmada la disponibilidad, enviamos un link de pago o cuenta para transferencia. Se requiere el 50% para confirmar la reserva y el 50% restante se paga al momento del check-in. Aceptamos transferencia bancaria, tarjeta de crédito/débito (Flow) y PayPal para clientes internacionales.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Cuál es la política de cancelación?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>Puedes cancelar sin costo hasta 72 horas antes del check-in. Cancelaciones con menos de 72 horas de anticipación o no-shows tendrán un cargo del 50% del total de la estadía.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Qué incluyen las áreas comunes?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>El condominio incluye piscina exterior de temporada, gimnasio equipado, lavandería, salón de eventos con parrilla, cancha de tenis y básquetbol, estacionamiento (consultar disponibilidad) y acceso controlado 24/7. Todo sin costo adicional.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Está incluido el desayuno?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>No incluimos desayuno, pero todos los departamentos tienen cocina completamente equipada para que prepares tus propias comidas. Hay supermercados, ferias locales y excelentes cafeterías a minutos del condominio.</p></div></div>
+          <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Dónde exactamente están ubicados?</span><i class="fa-solid fa-plus faq-icon"></i></button><div class="faq-answer"><p>Nuestros departamentos están en Pucón, IX Región, Chile. A menos de 16 km del Centro de Ski Pucón, a minutos del Lago Villarrica y del centro de la ciudad. Al confirmar tu reserva te enviamos la dirección exacta y acceso al condominio.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CONTACTO ═══════════════════ -->
+  <section class="contact section section-alt" id="contacto">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <p class="section-eyebrow">Contáctanos</p>
+          <h2 class="section-title">Estamos aquí<br/><em>para ayudarte</em></h2>
+          <p class="contact-text">Ya sea para consultas, reservas, o simplemente para saber más sobre Pucón y lo que puedes hacer en tu visita. ¡Escríbenos!</p>
+          <div class="contact-channels">
+            <a href="https://wa.me/56958771006?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20los%20departamentos%20de%20Pucon%20Hygge%20Stays" target="_blank" class="contact-channel whatsapp">
+              <div class="cc-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div class="cc-info"><strong>WhatsApp</strong><span>+56 9 5877 1006</span><em>Respuesta en menos de 1 hora</em></div>
+            </a>
+            <a href="https://www.instagram.com/pucon_hygge_stays/" target="_blank" class="contact-channel instagram">
+              <div class="cc-icon"><i class="fa-brands fa-instagram"></i></div>
+              <div class="cc-info"><strong>Instagram</strong><span>@pucon_hygge_stays</span><em>Síguenos para ver novedades</em></div>
+            </a>
+            <div class="contact-channel location">
+              <div class="cc-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="cc-info"><strong>Ubicación</strong><span>Pucón, IX Región, Chile</span><em>Dirección exacta al confirmar reserva</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm">
+            <h3 class="form-title">Envíanos un mensaje</h3>
+            <div class="form-group"><label for="ctName">Nombre *</label><input type="text" id="ctName" name="name" placeholder="Tu nombre" required /></div>
+            <div class="form-group"><label for="ctEmail">Email *</label><input type="email" id="ctEmail" name="email" placeholder="tu@email.com" required /></div>
+            <div class="form-group">
+              <label for="ctSubject">Asunto</label>
+              <select id="ctSubject" name="subject">
+                <option value="">Selecciona un asunto...</option>
+                <option value="reserva">Consulta sobre reserva</option>
+                <option value="disponibilidad">Disponibilidad</option>
+                <option value="precios">Precios y tarifas</option>
+                <option value="experiencias">Experiencias en Pucón</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="ctMessage">Mensaje *</label><textarea id="ctMessage" name="message" placeholder="¿En qué podemos ayudarte?" rows="4" required></textarea></div>
+            <button type="submit" class="btn btn-primary btn-full"><i class="fa-solid fa-paper-plane"></i> Enviar mensaje</button>
+          </form>
+          <div class="contact-success" id="contactSuccess" style="display:none">
+            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>¡Mensaje enviado!</h3>
+            <p>Gracias por escribirnos. Te responderemos pronto. Si necesitas respuesta urgente, escríbenos directamente por WhatsApp.</p>
+            <a href="https://wa.me/56958771006" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#inicio" class="nav-logo footer-logo"><span class="logo-mark">✦</span><span class="logo-text">Pucon<strong>Hygge</strong>Stays</span></a>
+          <p class="footer-tagline">Acogedores departamentos en el sur de Chile.<br/>Tu hogar lejos del hogar.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/pucon_hygge_stays/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/56958771006" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@pucon.hygge.stays" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Departamentos</h4>
+          <ul>
+            <li><a href="#departamentos">Depto. Volcán</a></li>
+            <li><a href="#departamentos">Depto. Lago</a></li>
+            <li><a href="#departamentos">Depto. Bosque</a></li>
+            <li><a href="#reserva">Reservar ahora</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Información</h4>
+          <ul>
+            <li><a href="#nosotros">Sobre nosotros</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#experiencias">Experiencias</a></li>
+            <li><a href="#faq">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="https://wa.me/56958771006" target="_blank">+56 9 5877 1006</a></li>
+            <li><a href="https://www.instagram.com/pucon_hygge_stays/" target="_blank">@pucon_hygge_stays</a></li>
+            <li><span>Pucón, IX Región, Chile</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Pucon Hygge Stays. Todos los derechos reservados.</p>
+        <p class="footer-credit">Diseño con ❤️ para el sur de Chile</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════ WHATSAPP FLOTANTE ═══════════════════ -->
+  <a href="https://wa.me/56958771006?text=Hola%2C%20me%20interesa%20reservar%20en%20Pucon%20Hygge%20Stays%20%F0%9F%8F%94%EF%B8%8F" target="_blank" class="whatsapp-float" id="waFloat" aria-label="Chat de WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-tooltip">¡Chateemos!</span>
+  </a>
+
+  <!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lb-prev" id="lbPrev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lb-next" id="lbNext" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lb-img-wrap"><img id="lbImg" src="" alt="" /><p id="lbCaption"></p></div>
+  </div>
+  <div class="lightbox-overlay" id="lightboxOverlay"></div>
+
+  <script>
+/* ═══════════════════════════════════════════════
+   PUCON HYGGE STAYS — Main JavaScript (inline)
+   ═══════════════════════════════════════════════ */
+'use strict';
+
+const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
+/* 1. NAVIGATION */
+(function initNav() {
+  const header = $('#header');
+  const hamburger = $('#navHamburger');
+  const menu = $('#navMenu');
+
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  $$('.nav-link, .nav-cta', menu).forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const sections = $$('section[id]');
+  const navLinks = $$('.nav-link');
+  const observerNav = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active-link', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observerNav.observe(s));
+})();
+
+/* 2. SCROLL REVEAL */
+(function initScrollReveal() {
+  const revealEls = $$('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.delay || 0;
+        setTimeout(() => { entry.target.classList.add('visible'); }, delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  const autoReveal = ['.apt-card','.exp-card','.am-item','.testi-card','.bh-item','.contact-channel','.faq-item','.valor-item'];
+  autoReveal.forEach(sel => {
+    $$(sel).forEach((el, i) => {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+        el.dataset.delay = i * 80;
+        observer.observe(el);
+      }
+    });
+  });
+})();
+
+/* 3. TESTIMONIALS SLIDER */
+(function initTestimonials() {
+  const track = $('#testimonialsTrack');
+  const cards = $$('.testi-card', track);
+  const dotsWrap = $('#testiDots');
+  const prevBtn = $('#testiPrev');
+  const nextBtn = $('#testiNext');
+
+  if (!track || !cards.length) return;
+
+  let current = 0;
+  let autoTimer;
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Testimonio ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  function goTo(idx) {
+    current = (idx + cards.length) % cards.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    $$('.testi-dot', dotsWrap).forEach((d, i) => { d.classList.toggle('active', i === current); });
+    resetAuto();
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  resetAuto();
+})();
+
+/* 4. GALLERY LIGHTBOX */
+(function initGallery() {
+  const items = $$('.gal-item');
+  const lightbox = $('#lightbox');
+  const overlay = $('#lightboxOverlay');
+  const lbImg = $('#lbImg');
+  const lbCaption = $('#lbCaption');
+  const lbClose = $('#lbClose');
+  const lbPrev = $('#lbPrev');
+  const lbNext = $('#lbNext');
+
+  if (!items.length || !lightbox) return;
+
+  let currentIdx = 0;
+  const images = items.map(item => ({
+    src: $('img', item)?.src || '',
+    caption: $('span', item)?.textContent || ''
+  }));
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    showImage(idx);
+    lightbox.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showImage(idx) {
+    currentIdx = (idx + images.length) % images.length;
+    lbImg.src = images[currentIdx].src;
+    lbImg.alt = images[currentIdx].caption;
+    lbCaption.textContent = images[currentIdx].caption;
+  }
+
+  items.forEach((item, i) => { item.addEventListener('click', () => openLightbox(i)); });
+  lbClose.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => showImage(currentIdx - 1));
+  lbNext.addEventListener('click', () => showImage(currentIdx + 1));
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImage(currentIdx - 1);
+    if (e.key === 'ArrowRight') showImage(currentIdx + 1);
+  });
+
+  let txStart = 0;
+  lbImg.addEventListener('touchstart', e => { txStart = e.changedTouches[0].clientX; }, { passive: true });
+  lbImg.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - txStart;
+    if (Math.abs(dx) > 50) showImage(dx < 0 ? currentIdx + 1 : currentIdx - 1);
+  });
+})();
+
+/* 5. FAQ ACCORDION */
+(function initFAQ() {
+  $$('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const isOpen = q.getAttribute('aria-expanded') === 'true';
+      $$('.faq-question').forEach(other => {
+        other.setAttribute('aria-expanded', 'false');
+        other.nextElementSibling?.classList.remove('open');
+      });
+      if (!isOpen) {
+        q.setAttribute('aria-expanded', 'true');
+        q.nextElementSibling.classList.add('open');
+      }
+    });
+  });
+})();
+
+/* 6. BOOKING FORM */
+(function initBookingForm() {
+  const form = $('#bookingForm');
+  const success = $('#bookingSuccess');
+  const successApt = $('#successApt');
+  const checkin = $('#bookCheckin');
+  const checkout = $('#bookCheckout');
+  const aptSelect = $('#bookApt');
+  const summary = $('#bookingSummary');
+  const summaryDetails = $('#summaryDetails');
+
+  if (!form) return;
+
+  const todayStr = new Date().toISOString().split('T')[0];
+  checkin.min = todayStr;
+
+  checkin.addEventListener('change', () => {
+    const d = new Date(checkin.value);
+    d.setDate(d.getDate() + 2);
+    checkout.min = d.toISOString().split('T')[0];
+    if (checkout.value && checkout.value <= checkin.value) checkout.value = '';
+    updateSummary();
+  });
+
+  checkout.addEventListener('change', updateSummary);
+  aptSelect.addEventListener('change', updateSummary);
+
+  $$('[data-apt]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (aptSelect) { aptSelect.value = btn.dataset.apt; updateSummary(); }
+    });
+  });
+
+  function updateSummary() {
+    if (!checkin.value || !checkout.value || !aptSelect.value) { summary.style.display = 'none'; return; }
+    const nights = Math.ceil((new Date(checkout.value) - new Date(checkin.value)) / (1000 * 60 * 60 * 24));
+    if (nights <= 0) { summary.style.display = 'none'; return; }
+    const prices = { 'Volcán': 75000, 'Lago': 95000, 'Bosque': 65000 };
+    const price = prices[aptSelect.value] || 0;
+    const total = price * nights;
+    const fmt = d => { const [y,m,dd] = d.split('-'); return `${dd}/${m}/${y}`; };
+    summaryDetails.innerHTML = `<div style="display:flex;flex-direction:column;gap:4px;margin-top:6px;"><span>🏡 <strong>Depto. ${aptSelect.value}</strong></span><span>📅 ${fmt(checkin.value)} → ${fmt(checkout.value)} · ${nights} noche${nights !== 1 ? 's' : ''}</span><span>💰 Estimado: <strong>$${total.toLocaleString('es-CL')} CLP</strong> (desde $${price.toLocaleString('es-CL')}/noche)</span><small style="color:#999;margin-top:2px;">*Tarifa estimada. Precio final confirmado por WhatsApp.</small></div>`;
+    summary.style.display = 'block';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('[type="submit"]');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+
+    const data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      apartment: form.apartment.value,
+      checkin: form.checkin.value,
+      checkout: form.checkout.value,
+      guests: form.guests.value,
+      source: form.source?.value || '',
+      message: form.message?.value.trim() || '',
+    };
+
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      successApt.textContent = `Departamento ${data.apartment}`;
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 600);
+
+    const waMsg = encodeURIComponent(`Hola! Quiero reservar en Pucon Hygge Stays 🏔️\n\n👤 Nombre: ${data.name}\n🏡 Depto: ${data.apartment}\n📅 Check-in: ${data.checkin}\n📅 Check-out: ${data.checkout}\n👥 Huéspedes: ${data.guests}\n📱 Teléfono: ${data.phone}\n${data.message ? '💬 Notas: ' + data.message : ''}`);
+
+    setTimeout(() => {
+      const waLink = success.querySelector('.btn-whatsapp');
+      if (waLink) waLink.href = `https://wa.me/56958771006?text=${waMsg}`;
+    }, 700);
+  });
+})();
+
+/* 7. CONTACT FORM */
+(function initContactForm() {
+  const form = $('#contactForm');
+  const success = $('#contactSuccess');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('[type="submit"]');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }, 600);
+  });
+})();
+
+/* 8. SMOOTH SCROLL */
+(function initSmoothScroll() {
+  $$('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (href === '#') return;
+      const target = $(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+
+/* 9. HERO PARALLAX */
+(function initParallax() {
+  const heroImg = $('.hero-img');
+  if (!heroImg) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        if (scrolled < window.innerHeight) heroImg.style.transform = `scale(1) translateY(${scrolled * 0.25}px)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+/* 10. WHATSAPP FLOAT */
+(function initWAFloat() {
+  const wa = $('#waFloat');
+  if (!wa) return;
+  wa.style.opacity = '0';
+  wa.style.transition = 'opacity 0.4s ease';
+  window.addEventListener('scroll', () => {
+    wa.style.opacity = window.scrollY > 200 ? '1' : '0';
+    wa.style.pointerEvents = window.scrollY > 200 ? 'all' : 'none';
+  }, { passive: true });
+})();
+
+/* 11. NAV ACTIVE LINK STYLE */
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `.header.scrolled .nav-link.active-link { color: var(--earth); background: var(--cream-dark); }`;
+  document.head.appendChild(style);
+})();
+
+/* 12. COUNTER ANIMATION */
+(function initCounters() {
+  const counters = $$('.stat strong');
+  const seen = new Set();
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !seen.has(entry.target)) {
+        seen.add(entry.target);
+        const el = entry.target;
+        const text = el.textContent;
+        const suffix = text.replace(/[0-9.]/g, '');
+        const value = parseFloat(text);
+        if (isNaN(value)) return;
+        const duration = 1200;
+        const startTime = performance.now();
+        const tick = now => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = (Number.isInteger(value) ? Math.round(value * eased) : (value * eased).toFixed(0)) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+})();
+
+/* 13. FORM VALIDATION */
+(function() {
+  $$('input, select, textarea').forEach(field => {
+    field.addEventListener('blur', () => {
+      if (field.hasAttribute('required') && !field.value.trim()) field.style.borderColor = '#E05252';
+      else field.style.borderColor = '';
+    });
+    field.addEventListener('input', () => { if (field.value.trim()) field.style.borderColor = ''; });
+  });
+})();
+
+/* 14. PAGE LOAD */
+(function() {
+  document.body.classList.add('loaded');
+  const style = document.createElement('style');
+  style.textContent = `body:not(.loaded){opacity:0;}body{transition:opacity 0.4s ease;}body.loaded{opacity:1;}`;
+  document.head.appendChild(style);
+})();
+
+/* 14b. FIX REMOTE IMG URLs — replace any remaining genspark token URLs with local paths */
+(function fixImgUrls() {
+  const urlMap = {
+    '/s/OL0TxCNH': 'images/207/01-sala-living-1.jpg',
+    '/s/Sm3zR4Id': 'images/207/02-sala-living-2.jpg',
+    '/s/o5PwW0sI': 'images/207/03-dormitorio-principal.jpg',
+    '/s/wpUzhCXu': 'images/207/04-dormitorio-2.jpg',
+    '/s/tcLG9LuF': 'images/207/05-dormitorio-3-twin.jpg',
+    '/s/kTE2chrB': 'images/207/06-cocina-comedor.jpg',
+    '/s/75DJfBSl': 'images/207/07-terraza.jpg',
+    '/s/marqn07M': 'images/207/08-terraza-vista-volcan.jpg',
+    '/s/gKl5qZEW': 'images/207/09-bano.jpg',
+    '/s/ThSo6l9M': 'images/201/01-living-sala.jpg',
+    '/s/qWSPCpXZ': 'images/201/02-dormitorio-principal.jpg',
+    '/s/uYU9i5Xu': 'images/201/03-cocina-comedor.jpg',
+    '/s/NTCHTEuy': 'images/201/04-living-cocina.jpg',
+    '/s/kgra08Qh': 'images/201/05-dormitorio-literas.jpg',
+    '/s/ZkwvDzAJ': 'images/201/06-terraza.jpg',
+    '/s/h5nK7MHG': 'images/201/07-bano.jpg',
+    '/s/x6s0U36e': 'images/201/08-pasillo-macrame.jpg',
+    '/s/cRvObS0n': 'images/comunes/juegos-infantiles.jpg',
+    '/s/KyXjLBZN': 'images/comunes/lavanderia.jpg',
+    '/s/6PgxqDIw': 'images/comunes/ski-telecabina.jpg',
+    '/s/bs6XcAg0': 'images/207/10-dormitorio-individual.jpg',
+    '/s/U8DIGZIH': 'images/207/11-bano-2.jpg',
+    '/s/5MgPBL93': 'images/207/12-cocina-2.jpg',
+    '/s/BpjvQUQ7': 'images/207/13-decoracion.jpg',
+    '/s/QRs2skQx': 'images/207/14-dormitorio-detalle.jpg',
+  };
+  document.querySelectorAll('img[src*="genspark.ai/api/files"]').forEach(img => {
+    for (const [key, localPath] of Object.entries(urlMap)) {
+      if (img.src.includes(key)) {
+        img.src = localPath;
+        break;
+      }
+    }
+  });
+})();
+
+/* 15. APT PHOTO SLIDERS */
+(function initAptSliders() {
+  const sliders = {};
+
+  function buildDots(sliderId, count) {
+    const dotsEl = document.getElementById('dots-' + sliderId.replace('slider-',''));
+    if (!dotsEl) return;
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'apt-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Foto ' + (i+1));
+      dot.addEventListener('click', () => goTo(sliderId, i));
+      dotsEl.appendChild(dot);
+    }
+  }
+
+  function updateDots(sliderId, index) {
+    const dotsEl = document.getElementById('dots-' + sliderId.replace('slider-',''));
+    if (!dotsEl) return;
+    dotsEl.querySelectorAll('.apt-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+
+  function goTo(sliderId, index) {
+    const s = sliders[sliderId];
+    if (!s) return;
+    s.current = ((index % s.count) + s.count) % s.count;
+    s.track.style.transform = `translateX(-${s.current * 100}%)`;
+    updateDots(sliderId, s.current);
+  }
+
+  // expose global for inline onclick
+  window.aptSlide = function(sliderId, dir) {
+    const s = sliders[sliderId];
+    if (!s) return;
+    goTo(sliderId, s.current + dir);
+  };
+
+  // init each slider
+  document.querySelectorAll('.apt-slider').forEach(el => {
+    const id = el.id;
+    const track = el.querySelector('.apt-slides');
+    const imgs = track ? track.querySelectorAll('img') : [];
+    const count = imgs.length;
+    if (!count) return;
+    sliders[id] = { track, count, current: 0 };
+    buildDots(id, count);
+
+    // touch swipe
+    let startX = 0;
+    el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) window.aptSlide(id, diff > 0 ? 1 : -1);
+    });
+
+    // auto-advance every 5 seconds
+    setInterval(() => window.aptSlide(id, 1), 5000);
+  });
+})();
+
+/* 16. AVAILABILITY CALENDAR (Front-end) */
+(function initAvailabilityCalendar() {
+  const calWrap = document.getElementById('availabilityCalendar');
+  if (!calWrap) return;
+
+  let calYear = new Date().getFullYear();
+  let calMonth = new Date().getMonth();
+  let blockedDates = {};
+  let currentApt = 'volcan';
+
+  async function fetchBlocks(apt) {
+    try {
+      const res = await fetch(supaUrl('fechas_bloqueadas', '&limit=200'), { headers: supaHeaders() });
+      if (!res.ok) return {};
+      const rows = await res.json();
+      const map = {};
+      rows.forEach(b => {
+        if (b.apartment_slug !== apt) return;
+        const ci = new Date(b.fecha_inicio + 'T00:00:00');
+        const co = new Date(b.fecha_fin + 'T00:00:00');
+        for (let d = new Date(ci); d < co; d.setDate(d.getDate() + 1)) {
+          const ds = d.toISOString().slice(0,10);
+          map[ds] = b.origen || 'blocked';
+        }
+      });
+      return map;
+    } catch { return {}; }
+  }
+
+  function renderCal() {
+    const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    const days = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
+    const firstDay = new Date(calYear, calMonth, 1);
+    const lastDay = new Date(calYear, calMonth + 1, 0);
+    const startDow = (firstDay.getDay() + 6) % 7;
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    let cells = '';
+    for (let i = 0; i < startDow; i++) cells += `<div class="av-cell av-empty"></div>`;
+    for (let d = 1; d <= lastDay.getDate(); d++) {
+      const ds = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const cellDate = new Date(calYear, calMonth, d);
+      const isPast = cellDate < today;
+      const origin = blockedDates[ds];
+      const isBlocked = !!origin;
+      let cls = 'av-cell';
+      if (isPast) cls += ' av-past';
+      else if (isBlocked) cls += ' av-blocked';
+      else cls += ' av-free';
+      const title = isBlocked ? `Reservado (${origin})` : isPast ? '' : 'Disponible';
+      cells += `<div class="${cls}" title="${title}"><span>${d}</span></div>`;
+    }
+    calWrap.innerHTML = `
+      <div class="av-cal-header">
+        <button class="av-nav" onclick="avCalNav(-1)" aria-label="Mes anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <span class="av-cal-title">${months[calMonth]} ${calYear}</span>
+        <button class="av-nav" onclick="avCalNav(1)" aria-label="Mes siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div class="av-cal-days">${days.map(d=>`<div class="av-day-name">${d}</div>`).join('')}</div>
+      <div class="av-cal-grid">${cells}</div>
+      <div class="av-legend">
+        <span><span class="av-legend-dot free"></span> Disponible</span>
+        <span><span class="av-legend-dot blocked"></span> Reservado</span>
+        <span><span class="av-legend-dot past"></span> Pasado</span>
+      </div>
+    `;
+  }
+
+  async function loadAndRender(apt) {
+    calWrap.innerHTML = '<div style="text-align:center;padding:2rem;color:#9A8878;font-size:0.9rem;"><i class="fa-solid fa-circle-notch fa-spin"></i> Cargando disponibilidad...</div>';
+    blockedDates = await fetchBlocks(apt);
+    renderCal();
+  }
+
+  window.avCalNav = function(dir) {
+    calMonth += dir;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCal();
+  };
+
+  window.avCalChangeApt = function(apt) {
+    currentApt = apt;
+    document.querySelectorAll('.av-apt-btn').forEach(b => b.classList.remove('active'));
+    const activeBtn = document.querySelector(`.av-apt-btn[data-apt="${apt}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+    loadAndRender(apt);
+  };
+
+  loadAndRender(currentApt);
+})();
+
+console.log('✦ Pucon Hygge Stays — Preview Ready');
+  </script>
+</body>
+</html>
