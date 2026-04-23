@@ -11,6 +11,13 @@
 const SUPABASE_URL = 'PEGAR_AQUI_TU_PROJECT_URL';
 const SUPABASE_KEY = 'PEGAR_AQUI_TU_ANON_PUBLIC_KEY';
 
+/* ── Flag de configuración ── */
+const SUPABASE_CONFIGURED = !SUPABASE_URL.startsWith('PEGAR_AQUI') && !SUPABASE_KEY.startsWith('PEGAR_AQUI');
+
+if (!SUPABASE_CONFIGURED) {
+  console.warn('⚠️ Supabase no configurado. Edita js/config.js con tus credenciales para activar el backend.');
+}
+
 /* ── Helpers de API REST ── */
 function supaHeaders(extra = {}) {
   return {
@@ -24,8 +31,23 @@ function supaUrl(table, params = '') {
   return `${SUPABASE_URL}/rest/v1/${table}?select=*${params}`;
 }
 
+/* ── Fetch seguro: devuelve null si Supabase no está configurado ── */
+async function supaFetch(url, opts = {}) {
+  if (!SUPABASE_CONFIGURED) return null;
+  try {
+    const res = await fetch(url, opts);
+    return res;
+  } catch (e) {
+    console.warn('supaFetch error:', e.message);
+    return null;
+  }
+}
+
 /* ── Helper de Storage ── */
 async function uploadToStorage(file, folder = 'general') {
+  if (!SUPABASE_CONFIGURED) {
+    throw new Error('Supabase no está configurado. Edita js/config.js con tus credenciales.');
+  }
   const ext = file.name.split('.').pop();
   const filename = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
   const res = await fetch(

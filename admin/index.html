@@ -1108,12 +1108,21 @@ function doLogout() { sessionStorage.removeItem(SESSION_KEY); location.reload();
 function initAdmin() {
   updateTopbarDate();
   loadDashboard();
-  renderGallery();
   renderIcal();
   setInterval(updateTopbarDate, 60000);
 }
 function updateTopbarDate() {
   document.getElementById('topbarDate').textContent = new Date().toLocaleDateString('es-CL', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+/* ─── IMG SRC HELPER ─── */
+// Resuelve src de imagen: si es URL absoluta (Supabase Storage, http, etc.) la devuelve tal cual;
+// si es ruta relativa (ej. "images/201/..") le antepone "../" (admin está en /admin/).
+function imgSrc(url, fallback = 'images/201/01-living-sala.jpg') {
+  const u = (url || '').trim();
+  if (!u) return '../' + fallback;
+  if (/^(https?:)?\/\//i.test(u) || u.startsWith('data:')) return u;
+  return '../' + u;
 }
 
 /* ─── NAVIGATION ─── */
@@ -1238,7 +1247,11 @@ function previewFromUrlField(url, previewId) {
   if (!wrap) return;
   if (!url) { wrap.style.display = 'none'; return; }
   const img = wrap.querySelector('img');
-  if (img) { img.src = url; wrap.style.display = 'block'; }
+  if (img) {
+    const u = url.trim();
+    img.src = /^(https?:)?\/\//i.test(u) || u.startsWith('data:') ? u : '../' + u;
+    wrap.style.display = 'block';
+  }
 }
 
 function clearUploadField(fieldId, previewId) {
@@ -1304,7 +1317,7 @@ async function loadDashboard() {
   document.getElementById('dashAptStatus').innerHTML = deptos.slice(0,3).map(d => {
     const nr = reservas.filter(r=>r.apartment&&r.apartment.includes(d.nombre)&&r.checkin>=todayStr()&&r.status!=='rechazada').sort((a,b)=>a.checkin.localeCompare(b.checkin))[0];
     return `<div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--cream-d);">
-      <img src="../${d.imagen_principal||'images/201/01-living-sala.jpg'}" style="width:48px;height:48px;border-radius:8px;object-fit:cover;" onerror="this.src='../images/201/01-living-sala.jpg'" />
+      <img src="${imgSrc(d.imagen_principal)}" style="width:48px;height:48px;border-radius:8px;object-fit:cover;" onerror="this.src='../images/201/01-living-sala.jpg'" />
       <div style="flex:1;"><div style="font-weight:700;font-size:0.88rem;color:var(--earth);">${d.nombre} ${d.numero||''}</div>
       <div style="font-size:0.75rem;color:var(--mid);">${nr?`Próx: ${formatDate(nr.checkin)}`:'Sin reservas futuras'}</div>
       <div style="font-size:0.78rem;color:var(--bark);font-weight:600;">$${(d.precio_noche||0).toLocaleString('es-CL')}/noche</div></div>
@@ -1474,7 +1487,7 @@ function renderAptGrid() {
   grid.innerHTML=allDeptos.map((d,i)=>`
     <div class="apt-admin-card ${d.activo===false?'inactive':''}">
       <div style="position:relative;">
-        <img class="apt-card-thumb" src="../${d.imagen_principal||'images/201/01-living-sala.jpg'}" alt="${d.nombre}" onerror="this.src='../images/201/01-living-sala.jpg'" />
+        <img class="apt-card-thumb" src="${imgSrc(d.imagen_principal)}" alt="${d.nombre}" onerror="this.src='../images/201/01-living-sala.jpg'" />
         <div style="position:absolute;top:8px;left:8px;background:var(--earth);color:#fff;font-size:0.7rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:20px;">Pos. ${i+1}</div>
         <div style="position:absolute;top:8px;right:8px;">
           <span class="apt-status-dot ${d.activo===false?'inactive':''}" title="${d.activo===false?'Inactivo':'Activo'}" style="width:12px;height:12px;display:block;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></span>
@@ -1561,7 +1574,7 @@ function renderDeptoFotosList() {
   if(!allDeptoFotos.length){cont.innerHTML='<div class="empty-state" style="padding:1.5rem;"><i class="fa-solid fa-images"></i><h3>Sin fotos aún</h3><p>Agrega fotos usando el formulario de abajo.</p></div>';return;}
   cont.innerHTML=allDeptoFotos.map((f,i)=>`
     <div class="photo-item">
-      <img src="../${f.imagen_url}" alt="${f.titulo||''}" onerror="this.src='../images/201/01-living-sala.jpg'" />
+      <img src="${imgSrc(f.imagen_url)}" alt="${f.titulo||''}" onerror="this.src='../images/201/01-living-sala.jpg'" />
       <div class="photo-item-info">
         <div class="photo-item-name">${f.titulo||'Sin descripción'}</div>
         <div class="photo-item-url">${f.imagen_url}</div>
@@ -1651,10 +1664,10 @@ function renderHeroCarouselList() {
   if(!allHeroImgs.length){cont.innerHTML='<div class="empty-state"><i class="fa-solid fa-image"></i><h3>Sin imágenes en el carrusel</h3><p>Agrega la primera imagen con el botón de arriba.</p></div>';return;}
   // Update preview with first active image
   const firstActive=allHeroImgs.find(i=>i.activo!==false)||allHeroImgs[0];
-  if(firstActive) document.getElementById('heroPreviewImg').src='../'+firstActive.imagen_url;
+  if(firstActive) document.getElementById('heroPreviewImg').src=imgSrc(firstActive.imagen_url,'images/207/08-terraza-vista-volcan.jpg');
   cont.innerHTML=allHeroImgs.map((img,i)=>`
     <div class="carousel-item ${img.activo===false?'opacity:0.5;':''}">
-      <img src="../${img.imagen_url}" alt="${img.titulo||''}" onerror="this.src='../images/207/08-terraza-vista-volcan.jpg'" />
+      <img src="${imgSrc(img.imagen_url,'images/207/08-terraza-vista-volcan.jpg')}" alt="${img.titulo||''}" onerror="this.src='../images/207/08-terraza-vista-volcan.jpg'" />
       <div class="carousel-item-info">
         <strong>${img.titulo||'Sin título'}</strong>
         <span>${img.subtitulo||img.imagen_url}</span>
@@ -1680,7 +1693,7 @@ function openAddHeroModal() {
   document.getElementById('hero-id').value=''; document.getElementById('hero-url').value='';
   document.getElementById('hero-titulo').value=''; document.getElementById('hero-subtitulo').value='';
   document.getElementById('hero-orden').value=allHeroImgs.length+1; document.getElementById('hero-activo').checked=true;
-  document.getElementById('heroModalPreview').style.display='none';
+  clearUploadField('hero-url','prev-hero-url');
   openModal('modalHero');
 }
 function editHeroImg(id) {
@@ -1690,12 +1703,8 @@ function editHeroImg(id) {
   document.getElementById('hero-id').value=id; document.getElementById('hero-url').value=img.imagen_url||'';
   document.getElementById('hero-titulo').value=img.titulo||''; document.getElementById('hero-subtitulo').value=img.subtitulo||'';
   document.getElementById('hero-orden').value=img.orden||1; document.getElementById('hero-activo').checked=img.activo!==false;
-  previewHeroImg(); openModal('modalHero');
-}
-function previewHeroImg() {
-  const url=document.getElementById('hero-url').value.trim();
-  const prev=document.getElementById('heroModalPreview');
-  if(url){prev.src='../'+url; prev.style.display='block';}else{prev.style.display='none';}
+  previewFromUrlField(img.imagen_url||'','prev-hero-url');
+  openModal('modalHero');
 }
 async function saveHeroImg() {
   const url=document.getElementById('hero-url').value.trim();
@@ -1739,7 +1748,7 @@ function renderActividadesList() {
   if(!allActividades.length){cont.innerHTML='<div class="empty-state"><i class="fa-solid fa-map-location-dot"></i><h3>Sin actividades</h3></div>';return;}
   cont.innerHTML=allActividades.map((a,i)=>`
     <div class="content-item ${a.activo===false?'opacity:0.55;':''}">
-      <img src="../${a.imagen_url||'images/207/07-terraza.jpg'}" alt="${a.titulo||''}" onerror="this.src='../images/207/07-terraza.jpg'" />
+      <img src="${imgSrc(a.imagen_url,'images/207/07-terraza.jpg')}" alt="${a.titulo||''}" onerror="this.src='../images/207/07-terraza.jpg'" />
       <div class="content-item-body">
         <div class="content-item-title">${a.titulo||'Sin título'}
           <span style="font-size:0.7rem;margin-left:0.4rem;color:${a.activo===false?'var(--danger)':'var(--success)'};">${a.activo===false?'● Oculta':'● Activa'}</span>
@@ -1764,7 +1773,7 @@ function openAddActividadModal() {
   document.getElementById('act-id').value=''; document.getElementById('act-titulo').value='';
   document.getElementById('act-imagen').value=''; document.getElementById('act-desc').value='';
   document.getElementById('act-orden').value=allActividades.length+1; document.getElementById('act-activo').checked=true;
-  document.getElementById('actImgPreview').style.display='none';
+  clearUploadField('act-imagen','prev-act-imagen');
   openModal('modalActividad');
 }
 function editActividad(id) {
@@ -1774,12 +1783,8 @@ function editActividad(id) {
   document.getElementById('act-id').value=id; document.getElementById('act-titulo').value=a.titulo||'';
   document.getElementById('act-imagen').value=a.imagen_url||''; document.getElementById('act-desc').value=a.descripcion||'';
   document.getElementById('act-orden').value=a.orden||1; document.getElementById('act-activo').checked=a.activo!==false;
-  previewActImg(); openModal('modalActividad');
-}
-function previewActImg() {
-  const url=document.getElementById('act-imagen').value.trim();
-  const prev=document.getElementById('actImgPreview');
-  if(url){prev.src='../'+url;prev.style.display='block';}else{prev.style.display='none';}
+  previewFromUrlField(a.imagen_url||'','prev-act-imagen');
+  openModal('modalActividad');
 }
 async function saveActividad() {
   const titulo=document.getElementById('act-titulo').value.trim();
@@ -1824,7 +1829,7 @@ function renderAreasFotosList() {
   if(!allAreasFotos.length){cont.innerHTML='<div class="empty-state"><i class="fa-solid fa-building-columns"></i><h3>Sin fotos</h3></div>';return;}
   cont.innerHTML=allAreasFotos.map((f,i)=>`
     <div class="content-item">
-      <img src="../${f.imagen_url||''}" alt="${f.titulo||''}" onerror="this.src='../images/comunes/juegos-infantiles.jpg'" />
+      <img src="${imgSrc(f.imagen_url,'images/comunes/juegos-infantiles.jpg')}" alt="${f.titulo||''}" onerror="this.src='../images/comunes/juegos-infantiles.jpg'" />
       <div class="content-item-body">
         <div class="content-item-title">${f.titulo||'Sin título'} <span style="font-size:0.7rem;color:${f.activo===false?'var(--danger)':'var(--success)'};">${f.activo===false?'● Oculta':'● Activa'}</span></div>
         <div class="content-item-desc">${f.imagen_url}</div>
@@ -1844,7 +1849,8 @@ function openAddAreaModal() {
   document.getElementById('modalAreaTitle').textContent='Agregar foto de área común';
   document.getElementById('area-id').value=''; document.getElementById('area-url').value='';
   document.getElementById('area-titulo').value=''; document.getElementById('area-orden').value=allAreasFotos.length+1;
-  document.getElementById('area-activo').checked=true; document.getElementById('areaImgPreview').style.display='none';
+  document.getElementById('area-activo').checked=true;
+  clearUploadField('area-url','prev-area-url');
   openModal('modalArea');
 }
 function editAreaFoto(id) {
@@ -1853,12 +1859,9 @@ function editAreaFoto(id) {
   document.getElementById('modalAreaTitle').textContent='Editar foto de área común';
   document.getElementById('area-id').value=id; document.getElementById('area-url').value=f.imagen_url||'';
   document.getElementById('area-titulo').value=f.titulo||''; document.getElementById('area-orden').value=f.orden||1;
-  document.getElementById('area-activo').checked=f.activo!==false; previewAreaImg(); openModal('modalArea');
-}
-function previewAreaImg() {
-  const url=document.getElementById('area-url').value.trim();
-  const prev=document.getElementById('areaImgPreview');
-  if(url){prev.src='../'+url;prev.style.display='block';}else{prev.style.display='none';}
+  document.getElementById('area-activo').checked=f.activo!==false;
+  previewFromUrlField(f.imagen_url||'','prev-area-url');
+  openModal('modalArea');
 }
 async function saveAreaFoto() {
   const url=document.getElementById('area-url').value.trim();
@@ -1897,7 +1900,7 @@ function renderPlayaFotosList() {
   if(!allPlayaFotos.length){cont.innerHTML='<div class="empty-state"><i class="fa-solid fa-water"></i><h3>Sin fotos</h3></div>';return;}
   cont.innerHTML=allPlayaFotos.map((f,i)=>`
     <div class="content-item">
-      <img src="../${f.imagen_url||''}" alt="${f.titulo||''}" onerror="this.src='../images/207/07-terraza.jpg'" />
+      <img src="${imgSrc(f.imagen_url,'images/207/07-terraza.jpg')}" alt="${f.titulo||''}" onerror="this.src='../images/207/07-terraza.jpg'" />
       <div class="content-item-body">
         <div class="content-item-title">${f.titulo||'Sin título'} <span style="font-size:0.7rem;color:${f.activo===false?'var(--danger)':'var(--success)'};">${f.activo===false?'● Oculta':'● Activa'}</span></div>
         <div class="content-item-desc">${f.descripcion||f.imagen_url}</div>
@@ -1918,7 +1921,8 @@ function openAddPlayaModal() {
   document.getElementById('playa-id').value=''; document.getElementById('playa-url').value='';
   document.getElementById('playa-titulo').value=''; document.getElementById('playa-desc').value='';
   document.getElementById('playa-orden').value=allPlayaFotos.length+1; document.getElementById('playa-activo').checked=true;
-  document.getElementById('playaImgPreview').style.display='none'; openModal('modalPlaya');
+  clearUploadField('playa-url','prev-playa-url');
+  openModal('modalPlaya');
 }
 function editPlayaFoto(id) {
   const f=allPlayaFotos.find(x=>x.id===id); if(!f) return;
@@ -1927,12 +1931,8 @@ function editPlayaFoto(id) {
   document.getElementById('playa-id').value=id; document.getElementById('playa-url').value=f.imagen_url||'';
   document.getElementById('playa-titulo').value=f.titulo||''; document.getElementById('playa-desc').value=f.descripcion||'';
   document.getElementById('playa-orden').value=f.orden||1; document.getElementById('playa-activo').checked=f.activo!==false;
-  previewPlayaImg(); openModal('modalPlaya');
-}
-function previewPlayaImg() {
-  const url=document.getElementById('playa-url').value.trim();
-  const prev=document.getElementById('playaImgPreview');
-  if(url){prev.src='../'+url;prev.style.display='block';}else{prev.style.display='none';}
+  previewFromUrlField(f.imagen_url||'','prev-playa-url');
+  openModal('modalPlaya');
 }
 async function savePlayaFoto() {
   const url=document.getElementById('playa-url').value.trim();
@@ -2153,7 +2153,7 @@ function renderNoticiasList() {
   if(!allNoticias.length){list.innerHTML='<div class="empty-state"><i class="fa-solid fa-newspaper"></i><h3>Sin noticias</h3></div>';return;}
   list.innerHTML=allNoticias.map(n=>`
     <div class="post-item">
-      <img class="post-thumb" src="../${n.imagen_portada||'images/207/08-terraza-vista-volcan.jpg'}" alt="${n.titulo}" onerror="this.src='../images/207/08-terraza-vista-volcan.jpg'" />
+      <img class="post-thumb" src="${imgSrc(n.imagen_portada,'images/207/08-terraza-vista-volcan.jpg')}" alt="${n.titulo}" onerror="this.src='../images/207/08-terraza-vista-volcan.jpg'" />
       <div class="post-info"><h4>${n.titulo||'Sin título'}</h4><p>${n.resumen||''}</p>
         <div class="post-meta">
           <span class="badge" style="background:var(--cream-d);color:var(--earth);">${n.categoria||'Sin cat.'}</span>
@@ -2175,6 +2175,7 @@ function openNewNoticiaModal() {
   ['n-titulo','n-resumen','n-contenido','n-imagen'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('n-categoria').value='Novedad'; document.getElementById('n-fecha').value=todayStr();
   document.getElementById('n-autor').value='Pucon Hygge Stays'; document.getElementById('n-publicado').checked=true;
+  clearUploadField('n-imagen','prev-n-imagen');
   openModal('modalNoticia');
 }
 function editNoticia(id) {
@@ -2185,6 +2186,7 @@ function editNoticia(id) {
   document.getElementById('n-fecha').value=n.fecha_publicacion||todayStr(); document.getElementById('n-resumen').value=n.resumen||'';
   document.getElementById('n-contenido').value=n.contenido||''; document.getElementById('n-imagen').value=n.imagen_portada||'';
   document.getElementById('n-autor').value=n.autor||'Pucon Hygge Stays'; document.getElementById('n-publicado').checked=!!n.publicado;
+  previewFromUrlField(n.imagen_portada||'','prev-n-imagen');
   openModal('modalNoticia');
 }
 async function saveNoticia() {
@@ -2348,6 +2350,7 @@ async function refreshFrontEnd() {
       fetch(supaUrl('areas_comunes_fotos','&limit=1'),{headers:h}).then(r=>r.ok?'✅ Áreas Comunes':'⚠️ Áreas Comunes'),
       fetch(supaUrl('playa_fotos','&limit=1'),{headers:h}).then(r=>r.ok?'✅ Fotos Playa':'⚠️ Playa'),
       fetch(supaUrl('depto_fotos','&limit=1'),{headers:h}).then(r=>r.ok?'✅ Fotos Deptos':'⚠️ Deptos'),
+      fetch(supaUrl('galeria_fotos','&limit=1'),{headers:h}).then(r=>r.ok?'✅ Galería':'⚠️ Galería'),
       fetch(supaUrl('cms_textos','&limit=1'),{headers:h}).then(r=>r.ok?'✅ Textos CMS':'⚠️ CMS'),
     ]);
     resumen = checks;

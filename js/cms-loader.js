@@ -8,6 +8,7 @@
 
 /* ─── Helper API (Supabase) ─── */
 async function cmsApi(table, params = '') {
+  if (typeof SUPABASE_CONFIGURED !== 'undefined' && !SUPABASE_CONFIGURED) return [];
   try {
     const res = await fetch(supaUrl(table, `${params}&limit=100`), {
       headers: supaHeaders()

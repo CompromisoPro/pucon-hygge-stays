@@ -9,6 +9,7 @@ const SiteData = (() => {
 
   /* ── helpers (Supabase) ── */
   async function apiFetch(table, params = '') {
+    if (typeof SUPABASE_CONFIGURED !== 'undefined' && !SUPABASE_CONFIGURED) return [];
     try {
       const res = await fetch(supaUrl(table, `${params}&limit=200`), {
         headers: supaHeaders()
