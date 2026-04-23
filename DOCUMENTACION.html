@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Documentación Técnica — Pucon Hygge Stays</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Fira+Code:wght@400;500&display=swap');
+
+  :root {
+    --forest: #2D5016;
+    --forest-light: #3D6B1F;
+    --earth: #5C3D1E;
+    --sand: #C4A882;
+    --cream: #F5F0E8;
+    --cream-d: #EDE5D5;
+    --white: #fff;
+    --mid: #6B7280;
+    --text: #1F2937;
+    --success: #16A34A;
+    --warning: #D97706;
+    --danger: #DC2626;
+    --info: #2563EB;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--cream);
+  }
+
+  /* ── PORTADA ── */
+  .cover {
+    background: linear-gradient(135deg, var(--forest) 0%, #1a3009 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    page-break-after: always;
+  }
+  .cover-badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .cover h1 em { color: var(--sand); font-style: normal; }
+  .cover-sub {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 500px;
+    margin: 0 auto 3rem;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    width: 100%;
+    max-width: 600px;
+  }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-item span { display: block; opacity: 0.6; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-meta-item strong { font-size: 1rem; }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  /* ── ÍNDICE ── */
+  .toc {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid var(--forest);
+  }
+  .toc h2 { font-family: 'Playfair Display', serif; color: var(--forest); margin-bottom: 1.2rem; font-size: 1.3rem; }
+  .toc ol { padding-left: 1.5rem; }
+  .toc li { padding: 0.3rem 0; color: var(--mid); }
+  .toc li a { color: var(--forest-light); text-decoration: none; font-weight: 500; }
+  .toc li a:hover { text-decoration: underline; }
+  .toc-sub { list-style: lower-alpha; margin-top: 0.3rem; padding-left: 1.5rem; }
+  .toc-sub li { font-size: 0.85rem; }
+
+  /* ── SECCIONES ── */
+  .section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    border-top: 3px solid var(--forest);
+  }
+  .section-alt { border-top-color: var(--earth); }
+  .section-info { border-top-color: var(--info); }
+  .section-warning { border-top-color: var(--warning); }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--forest);
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  h2.section-title .num {
+    background: var(--forest);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    flex-shrink: 0;
+  }
+  .section-divider {
+    height: 1px;
+    background: var(--cream-d);
+    margin: 1.2rem 0;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--earth);
+    margin: 1.4rem 0 0.6rem;
+  }
+  h3:first-child { margin-top: 0; }
+  p { margin-bottom: 0.8rem; color: #374151; }
+
+  /* ── CHIPS Y BADGES ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .badge-green { background: #DCFCE7; color: #166534; }
+  .badge-orange { background: #FEF3C7; color: #92400E; }
+  .badge-red { background: #FEE2E2; color: #991B1B; }
+  .badge-blue { background: #DBEAFE; color: #1E40AF; }
+  .badge-gray { background: #F3F4F6; color: #374151; }
+
+  /* ── CÓDIGO ── */
+  pre {
+    background: #1E1E2E;
+    color: #CDD6F4;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    overflow-x: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin: 0.8rem 0;
+  }
+  code {
+    background: #F3F4F6;
+    color: var(--earth);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82em;
+  }
+  pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+  /* ── TABLAS ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.85rem;
+  }
+  th {
+    background: var(--forest);
+    color: white;
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid var(--cream-d);
+    vertical-align: top;
+  }
+  tr:hover td { background: var(--cream); }
+
+  /* ── CALLOUTS ── */
+  .callout {
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+  }
+  .callout-icon { font-size: 1.1rem; flex-shrink: 0; padding-top: 0.1rem; }
+  .callout-info { background: #EFF6FF; border-left: 3px solid #3B82F6; color: #1E3A5F; }
+  .callout-warning { background: #FFFBEB; border-left: 3px solid #F59E0B; color: #78350F; }
+  .callout-success { background: #F0FDF4; border-left: 3px solid #22C55E; color: #14532D; }
+  .callout-danger { background: #FFF1F2; border-left: 3px solid #F43F5E; color: #881337; }
+
+  /* ── LISTAS ── */
+  ul, ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+  li { padding: 0.2rem 0; }
+  ul li::marker { color: var(--forest); }
+
+  /* ── STEPS ── */
+  .steps { counter-reset: step; }
+  .step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    counter-increment: step;
+  }
+  .step-num {
+    background: var(--forest);
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .step-content { flex: 1; }
+  .step-content strong { display: block; font-weight: 700; color: var(--earth); }
+
+  /* ── FILE CHIPS ── */
+  .file-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: #F8F4EF;
+    border: 1px solid var(--cream-d);
+    border-radius: 6px;
+    padding: 0.15rem 0.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: var(--earth);
+    margin: 0.15rem 0.1rem;
+  }
+
+  /* ── GRID ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 0.8rem 0;
+  }
+  .grid-card {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--cream-d);
+  }
+  .grid-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--forest); margin-bottom: 0.5rem; }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--mid);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--cream-d);
+    margin-top: 3rem;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .cover { min-height: auto; padding: 4rem 2rem; }
+    .section { break-inside: avoid; }
+    pre { font-size: 0.72rem; }
+    @page { margin: 1.5cm; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 2rem; }
+    .cover-meta { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ PORTADA ═══════════════════ -->
+<div class="cover">
+  <div class="cover-badge">📋 Documentación Técnica</div>
+  <h1>Pucon <em>Hygge</em> Stays<br/>— De prototipo a producción</h1>
+  <p class="cover-sub">Todo lo que se hizo para convertir un sitio generado por GenSpark en una plataforma real con base de datos, administrador funcional y subida de fotos.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Proyecto</span>
+      <strong>Pucon Hygge Stays</strong>
+    </div>
+    <div class="cover-meta-item">
+      <span>Backend</span>
+      <strong>Supabase (PostgreSQL)</strong>
+    </div>
+    <div class="cover-meta-item">
+      <span>Deploy</span>
+      <strong>Netlify</strong>
+    </div>
+    <div class="cover-meta-item">
+      <span>Fecha</span>
+      <strong>Abril 2026</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONTENIDO ═══════════════════ -->
+<div class="page">
+
+  <!-- ÍNDICE -->
+  <div class="toc">
+    <h2>📑 Índice</h2>
+    <ol>
+      <li><a href="#s1">Punto de partida — el prototipo GenSpark</a></li>
+      <li><a href="#s2">Arquitectura elegida</a></li>
+      <li><a href="#s3">Configuración de Supabase</a>
+        <ol class="toc-sub">
+          <li>Tablas creadas</li>
+          <li>Storage (bucket de fotos)</li>
+          <li>Políticas RLS</li>
+        </ol>
+      </li>
+      <li><a href="#s4">Archivos modificados</a></li>
+      <li><a href="#s5">Panel de Administración</a></li>
+      <li><a href="#s6">Subida de imágenes (Supabase Storage)</a></li>
+      <li><a href="#s7">GitHub — repositorio</a></li>
+      <li><a href="#s8">Deploy en Netlify</a></li>
+      <li><a href="#s9">Credenciales y seguridad</a></li>
+      <li><a href="#s10">Tareas pendientes / Futuro</a></li>
+      <li><a href="#s11">SQL completo de referencia</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <div class="section" id="s1">
+    <h2 class="section-title"><span class="num">1</span> Punto de partida — el prototipo GenSpark</h2>
+    <div class="section-divider"></div>
+    <p>El sitio fue generado originalmente por <strong>GenSpark AI</strong>, una herramienta que produce sitios web estáticos. El resultado era visualmente bueno pero completamente <strong>no funcional</strong> a nivel de backend:</p>
+    <ul>
+      <li>Todas las llamadas a API apuntaban a <code>tables/...</code> (un servidor ficticio de GenSpark que no existe fuera de su plataforma)</li>
+      <li>No había base de datos real conectada</li>
+      <li>Las imágenes eran referencias a rutas locales (<code>images/201/...</code>) que no existían en el servidor</li>
+      <li>El panel de administración existía en HTML pero no podía guardar ni cargar nada</li>
+      <li>No había forma de subir fotos</li>
+    </ul>
+    <div class="callout callout-warning">
+      <span class="callout-icon">⚠️</span>
+      <div>El sitio se veía bien en la demo de GenSpark porque ellos sirven una versión local. Al sacarlo de GenSpark, el sitio quedaba completamente vacío y sin funcionalidad.</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="section section-alt" id="s2">
+    <h2 class="section-title"><span class="num">2</span> Arquitectura elegida</h2>
+    <div class="section-divider"></div>
+    <p>Se decidió mantener el frontend estático (HTML/CSS/JS puro) y conectarlo a <strong>Supabase</strong> como backend. Esta decisión fue tomada por simplicidad, costo cero y compatibilidad total con Netlify.</p>
+
+    <div class="grid-2">
+      <div class="grid-card">
+        <h4>🌐 Frontend</h4>
+        <ul>
+          <li>HTML + CSS + JavaScript puro</li>
+          <li>Sin frameworks ni build step</li>
+          <li>Diseño 100% preservado del original</li>
+          <li>Deploy en <strong>Netlify</strong></li>
+        </ul>
+      </div>
+      <div class="grid-card">
+        <h4>🗄️ Backend</h4>
+        <ul>
+          <li><strong>Supabase</strong> (PostgreSQL)</li>
+          <li>API REST automática (PostgREST)</li>
+          <li>Storage para imágenes</li>
+          <li>Row Level Security (RLS)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Flujo de datos</h3>
+    <pre>Visitante → index.html → cms-loader.js → Supabase API → muestra contenido
+Admin    → admin/index.html → apiGet/Post/Patch/Delete → Supabase API → guarda cambios
+Foto     → admin sube archivo → uploadToStorage() → bucket "fotos" → URL pública</pre>
+  </div>
+
+  <!-- 3 -->
+  <div class="section" id="s3">
+    <h2 class="section-title"><span class="num">3</span> Configuración de Supabase</h2>
+    <div class="section-divider"></div>
+
+    <h3>3a. Tablas creadas (correr en SQL Editor de Supabase)</h3>
+    <p>Se crearon 13 tablas en total. La query principal fue corrida y devolvió "Success".</p>
+    <table>
+      <thead><tr><th>Tabla</th><th>Descripción</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td><code>departamentos</code></td><td>Datos de los 3 deptos (nombre, precio, activo, etc.)</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>depto_fotos</code></td><td>Fotos del carrusel de cada departamento</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>hero_carousel</code></td><td>Imágenes del carrusel de portada</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>actividades_pucon</code></td><td>Cards "Vive Pucón"</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>areas_comunes_fotos</code></td><td>Galería de áreas comunes</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>playa_fotos</code></td><td>Galería de la playa privada</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>cms_textos</code></td><td>Todos los textos e imágenes editables del sitio</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>reservas</code></td><td>Solicitudes del formulario público</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>reservas_admin</code></td><td>Reservas gestionadas desde el admin</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>fechas_bloqueadas</code></td><td>Fechas no disponibles (calendario)</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>noticias</code></td><td>Blog / artículos del sitio</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>mensajes</code></td><td>Mensajes del formulario de contacto</td><td><span class="badge badge-green">✅ Creada</span></td></tr>
+        <tr><td><code>galeria_fotos</code></td><td>Fotos de la sección Galería del sitio</td><td><span class="badge badge-orange">⚠️ Correr SQL</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warning">
+      <span class="callout-icon">⚠️</span>
+      <div>La tabla <code>galeria_fotos</code> fue agregada después. Si no se ha corrido su SQL, el admin no puede guardar fotos de galería. Ver SQL completo en la sección 11.</div>
+    </div>
+
+    <h3>3b. Storage — bucket de fotos</h3>
+    <p>Se usa Supabase Storage para almacenar todas las imágenes del sitio. Hay que crear el bucket manualmente:</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Ir a Supabase → Storage</strong> En el menú lateral del proyecto.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><strong>New bucket</strong> Nombre: <code>fotos</code> (exactamente así, minúsculas)</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Marcar "Public bucket"</strong> Esto permite que las imágenes se vean en el sitio sin autenticación.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Save</strong></div></div>
+    </div>
+
+    <h3>3c. Políticas RLS de Storage</h3>
+    <p>Aunque el bucket es público, Supabase requiere políticas explícitas para permitir la subida de archivos con el <code>anon key</code>. Correr en SQL Editor:</p>
+    <pre>-- Permitir subida de archivos al bucket fotos
+create policy "Permitir subida publica a fotos"
+on storage.objects for insert
+with check (bucket_id = 'fotos');
+
+-- Permitir lectura publica
+create policy "Permitir lectura publica de fotos"
+on storage.objects for select
+using (bucket_id = 'fotos');
+
+-- Permitir actualizacion (para upsert)
+create policy "Permitir actualizacion en fotos"
+on storage.objects for update
+using (bucket_id = 'fotos');
+
+-- Permitir eliminacion
+create policy "Permitir eliminacion en fotos"
+on storage.objects for delete
+using (bucket_id = 'fotos');</pre>
+
+    <div class="callout callout-danger">
+      <span class="callout-icon">🚨</span>
+      <div>Sin estas políticas, la subida de fotos falla con el error: <em>"new row violates row-level security policy"</em>. Si ves ese error, correr el SQL de arriba.</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="section section-info" id="s4">
+    <h2 class="section-title"><span class="num">4</span> Archivos modificados</h2>
+    <div class="section-divider"></div>
+
+    <table>
+      <thead><tr><th>Archivo</th><th>Cambios realizados</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="file-chip">js/config.js</span></td>
+          <td>
+            <strong>Creado nuevo.</strong> Centraliza las credenciales de Supabase. Contiene:
+            <ul>
+              <li><code>SUPABASE_URL</code> y <code>SUPABASE_KEY</code> — credenciales del proyecto</li>
+              <li><code>supaHeaders()</code> — genera los headers de autenticación</li>
+              <li><code>supaUrl()</code> — construye URLs de la API REST</li>
+              <li><code>uploadToStorage()</code> — sube archivos al bucket "fotos"</li>
+              <li><code>SUPABASE_CONFIGURED</code> — flag de seguridad para no crashear sin credenciales</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="file-chip">js/cms-loader.js</span></td>
+          <td>
+            Reemplazadas todas las llamadas a <code>tables/...</code> por llamadas a Supabase. Funciones añadidas:
+            <ul>
+              <li>Carga dinámica de imágenes de la sección "Nosotros" desde cms_textos</li>
+              <li><code>loadGaleriaDinamica()</code> — carga el grid de galería desde <code>galeria_fotos</code></li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="file-chip">js/site-data.js</span></td>
+          <td>Actualizado helper <code>apiFetch()</code> para usar <code>supaUrl()</code> y <code>supaHeaders()</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="file-chip">js/main.js</span></td>
+          <td>Actualizados todos los <code>fetch()</code> inline (reservas, mensajes, noticias) para usar Supabase. Ajustada paginación de noticias con <code>Prefer: count=exact</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="file-chip">index.html</span></td>
+          <td>
+            <ul>
+              <li>Agregado <code>&lt;script src="js/config.js"&gt;</code></li>
+              <li>IDs añadidos a imágenes de Nosotros para carga dinámica</li>
+              <li>ID <code>galeria-dinamica</code> al grid de galería</li>
+              <li>Todos los <code>fetch('tables/...')</code> reemplazados por llamadas a Supabase</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="file-chip">admin/index.html</span></td>
+          <td>
+            <strong>Refactorización completa del backend.</strong>
+            <ul>
+              <li>Funciones <code>apiGet/Post/Patch/Delete</code> reescritas para PostgREST</li>
+              <li>Componente de upload de imágenes con preview, barra de progreso y botón limpiar</li>
+              <li>Los 6 campos de imagen reemplazados por el nuevo componente</li>
+              <li>Campos de imágenes de Nosotros en el CMS (tipo <code>upload</code>)</li>
+              <li>Sección Galería completamente nueva con CRUD</li>
+              <li>Helper <code>imgSrc()</code> para manejar URLs absolutas y relativas</li>
+              <li>Función <code>loadGaleria()</code> y modal de galería</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="file-chip">README.md</span></td>
+          <td>Actualizado con instrucciones completas de setup, deploy, SQL de tablas nuevas y setup de Supabase Storage.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5 -->
+  <div class="section" id="s5">
+    <h2 class="section-title"><span class="num">5</span> Panel de Administración</h2>
+    <div class="section-divider"></div>
+    <p>El admin está en <code>/admin/index.html</code>. Acceso: usuario <code>admin</code> / contraseña <code>hygge2025</code>.</p>
+
+    <table>
+      <thead><tr><th>Sección del admin</th><th>Qué gestiona</th></tr></thead>
+      <tbody>
+        <tr><td>Dashboard</td><td>Resumen de reservas, estado de deptos, accesos rápidos</td></tr>
+        <tr><td>Reservas</td><td>Lista, crear, editar, cambiar estado (pendiente/confirmada/etc.)</td></tr>
+        <tr><td>Calendario</td><td>Vista mensual con reservas, bloquear/desbloquear fechas</td></tr>
+        <tr><td>Gestión Deptos</td><td>Editar datos de cada departamento + subir fotos del carrusel</td></tr>
+        <tr><td>Sync iCal</td><td>Placeholder para sincronización con Airbnb/Booking (futuro)</td></tr>
+        <tr><td>Imagen Principal</td><td>Carrusel del hero: subir, ordenar, activar/desactivar</td></tr>
+        <tr><td>Vive Pucón</td><td>Cards de actividades con imagen, descripción y orden</td></tr>
+        <tr><td>Áreas Comunes</td><td>Fotos de las áreas comunes del condominio</td></tr>
+        <tr><td>Acceso Playa</td><td>Fotos de la playa/lago privada</td></tr>
+        <tr><td>Editor CMS</td><td>Todos los textos editables del sitio + imágenes de sección Nosotros</td></tr>
+        <tr><td>Galería</td><td>Fotos de la sección Galería del landing (con subida real a Storage)</td></tr>
+        <tr><td>Noticias</td><td>Blog del sitio con foto de portada, categorías y publicar/despublicar</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-icon">ℹ️</span>
+      <div>El botón <strong>"Actualizar Front"</strong> en la topbar del admin verifica que todas las tablas de Supabase respondan correctamente y luego recarga el sitio público en una nueva pestaña.</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="section section-alt" id="s6">
+    <h2 class="section-title"><span class="num">6</span> Subida de imágenes (Supabase Storage)</h2>
+    <div class="section-divider"></div>
+    <p>Todas las secciones del admin que tienen imágenes usan un componente de upload unificado que:</p>
+    <ul>
+      <li>Tiene un botón <strong>"Subir foto"</strong> que abre el selector de archivo</li>
+      <li>Muestra una <strong>barra de progreso</strong> mientras sube</li>
+      <li>Muestra <strong>preview</strong> de la imagen subida</li>
+      <li>También acepta <strong>pegar una URL</strong> directamente</li>
+      <li>Tiene botón para <strong>limpiar/cambiar</strong> la imagen</li>
+    </ul>
+
+    <h3>Carpetas de organización en el bucket</h3>
+    <table>
+      <thead><tr><th>Sección</th><th>Carpeta en bucket "fotos"</th></tr></thead>
+      <tbody>
+        <tr><td>Hero carousel</td><td><code>fotos/hero/</code></td></tr>
+        <tr><td>Fotos de departamentos</td><td><code>fotos/departamentos/</code></td></tr>
+        <tr><td>Vive Pucón / Actividades</td><td><code>fotos/actividades/</code></td></tr>
+        <tr><td>Áreas Comunes</td><td><code>fotos/areas-comunes/</code></td></tr>
+        <tr><td>Playa privada</td><td><code>fotos/playa/</code></td></tr>
+        <tr><td>Noticias</td><td><code>fotos/noticias/</code></td></tr>
+        <tr><td>Galería general</td><td><code>fotos/galeria/</code></td></tr>
+        <tr><td>Nosotros (sección about)</td><td><code>fotos/nosotros/</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>URL generada</h3>
+    <p>Cada imagen subida genera una URL pública permanente del tipo:</p>
+    <pre>https://[proyecto].supabase.co/storage/v1/object/public/fotos/[carpeta]/[timestamp]-[random].[ext]</pre>
+    <p>Esta URL se guarda en la tabla correspondiente de Supabase y es cargada automáticamente por el sitio público.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="section" id="s7">
+    <h2 class="section-title"><span class="num">7</span> GitHub — repositorio</h2>
+    <div class="section-divider"></div>
+
+    <p><strong>Repositorio:</strong> <code>https://github.com/CompromisoPro/pucon-hygge-stays</code></p>
+
+    <h3>Para la persona que va a gestionar el sitio</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Hacer Fork</strong> Entrar al repo → botón "Fork" → "Create fork". Esto crea una copia en su cuenta de GitHub.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Conectar a Netlify</strong> Usar su fork (no el original) para el deploy. Así tiene control total.</div></div>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-icon">ℹ️</span>
+      <div>Las credenciales de Supabase ya están puestas en <code>js/config.js</code> y subidas al repo. El <code>anon key</code> de Supabase es pública por diseño (como una API key de Google Maps). Lo que protege los datos son las políticas RLS configuradas en la base de datos.</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="section section-info" id="s8">
+    <h2 class="section-title"><span class="num">8</span> Deploy en Netlify</h2>
+    <div class="section-divider"></div>
+
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Crear cuenta en netlify.com</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><strong>New site → Import an existing project → GitHub</strong> Seleccionar el fork del repo.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content">
+        <strong>Configuración del build:</strong>
+        <ul>
+          <li>Build command: <em>dejar vacío</em></li>
+          <li>Publish directory: <code>.</code> (un punto — la raíz)</li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Deploy site</strong> En ~1 minuto el sitio está live.</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Subir las fotos</strong> Entrar al admin (<code>/admin/</code>) y subir todas las imágenes por sección.</div></div>
+    </div>
+
+    <div class="callout callout-success">
+      <span class="callout-icon">✅</span>
+      <div>No se necesita ninguna variable de entorno en Netlify. Las credenciales de Supabase están directamente en <code>js/config.js</code>.</div>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-icon">⚠️</span>
+      <div>La carpeta <code>images/</code> con las fotos originales del prototipo GenSpark <strong>no está en el repo</strong>. El sitio mostrará las imágenes de fallback hasta que se suban fotos desde el admin a Supabase Storage.</div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="section" id="s9">
+    <h2 class="section-title"><span class="num">9</span> Credenciales y seguridad</h2>
+    <div class="section-divider"></div>
+
+    <table>
+      <thead><tr><th>Credencial</th><th>Valor</th><th>Ubicación</th></tr></thead>
+      <tbody>
+        <tr><td>Admin usuario</td><td><code>admin</code></td><td>Hardcodeado en <code>admin/index.html</code></td></tr>
+        <tr><td>Admin contraseña</td><td><code>hygge2025</code></td><td>Hardcodeado en <code>admin/index.html</code></td></tr>
+        <tr><td>Supabase Project URL</td><td><code>https://vpoutrwyrtcwsvwhumwz.supabase.co</code></td><td><code>js/config.js</code></td></tr>
+        <tr><td>Supabase Anon Key</td><td><code>eyJhbGci...</code> (JWT)</td><td><code>js/config.js</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Notas de seguridad</h3>
+    <ul>
+      <li>El <strong>anon key</strong> es una clave pública. Es normal que esté en el frontend y en GitHub. No da acceso de admin a Supabase.</li>
+      <li>Lo que protege la base de datos son las <strong>políticas RLS</strong> (Row Level Security) configuradas en el SQL de creación de tablas.</li>
+      <li>La contraseña del admin del sitio (<code>hygge2025</code>) es simple y está en el código. Para producción seria se debería implementar autenticación con <strong>Supabase Auth</strong>.</li>
+      <li>Para rotar el anon key: Supabase → Settings → API → "Reset anon key".</li>
+    </ul>
+  </div>
+
+  <!-- 10 -->
+  <div class="section section-warning" id="s10">
+    <h2 class="section-title"><span class="num">10</span> Tareas pendientes / Futuro</h2>
+    <div class="section-divider"></div>
+
+    <h3>Antes de lanzar (obligatorio)</h3>
+    <ul>
+      <li>☐ Crear bucket <code>fotos</code> en Supabase Storage (Public)</li>
+      <li>☐ Correr SQL de políticas RLS de Storage (ver sección 3c)</li>
+      <li>☐ Correr SQL de tabla <code>galeria_fotos</code> (ver sección 11)</li>
+      <li>☐ Subir todas las fotos desde el admin</li>
+      <li>☐ Hacer deploy en Netlify</li>
+    </ul>
+
+    <h3>Futuro / mejoras</h3>
+    <ul>
+      <li>🔮 <strong>Sync iCal</strong> con Airbnb/Booking — requiere un servidor proxy (Netlify Function o Supabase Edge Function). No es posible hacerlo solo desde el frontend por restricciones CORS.</li>
+      <li>🔮 <strong>Autenticación real del admin</strong> usando Supabase Auth en lugar de contraseña hardcodeada.</li>
+      <li>🔮 <strong>Dominio personalizado</strong> en Netlify (ej. <code>puconhyggestays.cl</code>).</li>
+      <li>🔮 <strong>Formulario de reservas conectado a email</strong> (Netlify Forms o un servicio de email como Resend).</li>
+      <li>🔮 <strong>Página de detalle de noticias</strong> — actualmente el blog solo muestra cards, no tiene página interior.</li>
+    </ul>
+  </div>
+
+  <!-- 11 -->
+  <div class="section" id="s11">
+    <h2 class="section-title"><span class="num">11</span> SQL completo de referencia</h2>
+    <div class="section-divider"></div>
+
+    <h3>Tabla galeria_fotos (correr además del SQL principal)</h3>
+    <pre>create table if not exists galeria_fotos (
+  id          uuid primary key default gen_random_uuid(),
+  imagen_url  text not null,
+  titulo      text,
+  categoria   text default 'general',
+  orden       int default 1,
+  activo      boolean default true,
+  created_at  timestamptz default now()
+);
+
+alter table galeria_fotos enable row level security;
+
+create policy "Public read galeria_fotos"
+  on galeria_fotos for select using (true);
+
+create policy "Admin insert galeria_fotos"
+  on galeria_fotos for insert with check (true);
+
+create policy "Admin update galeria_fotos"
+  on galeria_fotos for update using (true);
+
+create policy "Admin delete galeria_fotos"
+  on galeria_fotos for delete using (true);</pre>
+
+    <h3>Políticas RLS de Storage</h3>
+    <pre>create policy "Permitir subida publica a fotos"
+on storage.objects for insert
+with check (bucket_id = 'fotos');
+
+create policy "Permitir lectura publica de fotos"
+on storage.objects for select
+using (bucket_id = 'fotos');
+
+create policy "Permitir actualizacion en fotos"
+on storage.objects for update
+using (bucket_id = 'fotos');
+
+create policy "Permitir eliminacion en fotos"
+on storage.objects for delete
+using (bucket_id = 'fotos');</pre>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <p><strong>Pucon Hygge Stays</strong> — Documentación técnica generada en Abril 2026</p>
+    <p style="margin-top:0.3rem;">Repositorio: <code>github.com/CompromisoPro/pucon-hygge-stays</code> · Supabase: <code>vpoutrwyrtcwsvwhumwz</code></p>
+  </div>
+
+</div>
+
+</body>
+</html>
