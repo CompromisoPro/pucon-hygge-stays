@@ -103,17 +103,68 @@ pucoon/
 | `actividades_pucon` | Cards "Vive Pucón" |
 | `areas_comunes_fotos` | Galería de áreas comunes |
 | `playa_fotos` | Galería de la playa privada |
-| `cms_textos` | Todos los textos editables del sitio |
+| `cms_textos` | Todos los textos e imágenes editables del sitio (incluye nosotros_imagen_main/sec) |
 | `reservas` | Solicitudes del formulario público |
 | `reservas_admin` | Reservas gestionadas desde el admin |
 | `fechas_bloqueadas` | Fechas no disponibles (calendario) |
 | `noticias` | Blog / artículos |
 | `mensajes` | Mensajes del formulario de contacto |
+| `galeria_fotos` | Fotos de la sección Galería del sitio (subidas desde el admin) |
+
+---
+
+## ⚡ Configurar Supabase Storage (OBLIGATORIO para subir fotos)
+
+El admin ahora sube las fotos directamente a Supabase Storage. Sigue estos pasos **una sola vez**:
+
+1. Ve a tu proyecto en [supabase.com/dashboard](https://supabase.com/dashboard)
+2. En el menú lateral haz clic en **Storage**
+3. Clic en **New bucket**
+4. Nombre: `fotos` (exactamente así, minúsculas)
+5. Marca la opción **Public bucket** → clic en **Save**
+6. Ya está. Ahora puedes subir fotos desde el admin
+
+> Si el bucket no es público, las imágenes no se verán en el sitio.
+
+---
+
+## SQL adicional — tabla galeria_fotos
+
+Corre esta query en el **SQL Editor** de Supabase (además de la query principal):
+
+```sql
+-- Tabla para la galería de fotos del sitio
+create table if not exists galeria_fotos (
+  id          uuid primary key default gen_random_uuid(),
+  imagen_url  text not null,
+  titulo      text,
+  categoria   text default 'general',
+  orden       int default 1,
+  activo      boolean default true,
+  created_at  timestamptz default now()
+);
+
+alter table galeria_fotos enable row level security;
+
+create policy "Public read galeria_fotos"
+  on galeria_fotos for select using (true);
+
+create policy "Admin insert galeria_fotos"
+  on galeria_fotos for insert with check (true);
+
+create policy "Admin update galeria_fotos"
+  on galeria_fotos for update using (true);
+
+create policy "Admin delete galeria_fotos"
+  on galeria_fotos for delete using (true);
+```
 
 ---
 
 ## Notas importantes
 
-- **Imágenes**: Las fotos de los departamentos deben subirse a un hosting de imágenes (Supabase Storage, Cloudinary, o similar) y pegar las URLs en el admin.
+- **Imágenes**: Se suben directamente desde el admin a Supabase Storage (bucket `fotos`). No se necesita FTP ni hosting externo.
+- **Imágenes de Nosotros**: Se editan en Admin → Editor CMS → sección "Nosotros / About".
+- **Galería del sitio**: Se gestiona en Admin → Galería (sección independiente con subida de fotos).
 - **Seguridad**: Las credenciales del admin están hardcodeadas. Para producción seria, se recomienda implementar autenticación con Supabase Auth.
 - **El sitio funciona sin datos**: Si Supabase no responde, el sitio muestra el contenido HTML estático por defecto.

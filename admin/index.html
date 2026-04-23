@@ -31,6 +31,17 @@
     input, select, textarea { font-family: var(--font); font-size: 0.9rem; }
     img { max-width: 100%; }
 
+    /* ═══ UPLOAD COMPONENT ═══ */
+    .upload-field { display:flex; flex-direction:column; gap:0.5rem; }
+    .upload-preview-wrap { position:relative; border-radius:8px; overflow:hidden; max-height:180px; background:var(--cream-d); }
+    .upload-preview-img { width:100%; max-height:180px; object-fit:cover; display:block; }
+    .upload-remove-btn { position:absolute; top:6px; right:6px; background:rgba(0,0,0,0.55); color:#fff; border:none; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:0.75rem; transition:background 0.2s; }
+    .upload-remove-btn:hover { background:rgba(192,57,43,0.9); }
+    .upload-actions-row { display:flex; align-items:center; gap:0; flex-wrap:wrap; gap:0.4rem; }
+    .upload-progress-wrap { display:flex; align-items:center; gap:0.6rem; background:var(--cream-d); border-radius:6px; padding:0.4rem 0.75rem; }
+    .upload-progress-bar { height:6px; background:var(--forest); border-radius:3px; transition:width 0.4s ease; width:0; flex:1; }
+    #prog-label-${inputId} { font-size:0.78rem; color:var(--mid); white-space:nowrap; }
+
     /* ═══ LOGIN ═══ */
     #loginScreen { position: fixed; inset: 0; background: var(--earth); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.4s ease; }
     #loginScreen.hidden { opacity: 0; pointer-events: none; }
@@ -639,14 +650,16 @@
       </div>
 
       <!-- ═══ GALERÍA ═══ -->
+      <!-- ═══ GALERÍA ═══ -->
       <div class="view" id="view-galeria">
         <div class="page-header">
-          <div class="page-header-left"><h1>Galería de Imágenes</h1><p>Fotos disponibles en el proyecto</p></div>
+          <div class="page-header-left"><h1>Galería de Imágenes</h1><p>Fotos que aparecen en la sección Galería del sitio</p></div>
+          <div class="page-header-actions"><button class="btn btn-primary" onclick="openNewGaleriaModal()"><i class="fa-solid fa-plus"></i> Subir foto</button></div>
         </div>
-        <div class="alert alert-info"><i class="fa-solid fa-circle-info"></i> &nbsp;Las imágenes se sirven desde <code>images/</code>. Sube archivos directamente al proyecto en las carpetas correspondientes.</div>
-        <div class="card"><div class="card-header"><h2><i class="fa-solid fa-door-open"></i> Depto Volcán #201</h2></div><div class="gallery-admin-grid" id="gallery201"></div></div>
-        <div class="card"><div class="card-header"><h2><i class="fa-solid fa-water"></i> Depto Lago #207</h2></div><div class="gallery-admin-grid" id="gallery207"></div></div>
-        <div class="card"><div class="card-header"><h2><i class="fa-solid fa-building-columns"></i> Áreas Comunes</h2></div><div class="gallery-admin-grid" id="galleryComunes"></div></div>
+        <div class="card">
+          <div class="card-header"><h2><i class="fa-solid fa-images"></i> Todas las fotos</h2></div>
+          <div class="gallery-admin-grid" id="galeria-grid" style="padding:1rem;"></div>
+        </div>
       </div>
 
       <!-- ═══ NOTICIAS ═══ -->
@@ -755,16 +768,27 @@
       <div id="deptoFotosList"></div>
       <div style="background:var(--cream-d);border-radius:8px;padding:1rem;margin-top:1rem;">
         <p class="form-label" style="margin-bottom:0.5rem;"><i class="fa-solid fa-plus"></i> Agregar nueva foto</p>
-        <div style="display:flex;gap:0.5rem;align-items:flex-end;flex-wrap:wrap;">
-          <div class="form-group" style="flex:1;min-width:200px;margin:0;">
-            <label class="form-label">Ruta de imagen</label>
-            <input type="text" class="form-control" id="df-new-url" placeholder="images/201/01-living-sala.jpg" />
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div class="upload-field">
+            <div class="upload-preview-wrap" id="prev-df-new-url" style="display:none;">
+              <img src="" alt="Preview" class="upload-preview-img" />
+              <button type="button" class="upload-remove-btn" onclick="clearUploadField('df-new-url','prev-df-new-url')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="upload-actions-row">
+              <input type="file" accept="image/*" id="file-df-new-url" style="display:none" onchange="handleFileUpload(this,'df-new-url','prev-df-new-url','departamentos')">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-df-new-url').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+              <span style="font-size:0.75rem;color:var(--mid);">o</span>
+              <input type="text" class="form-control" id="df-new-url" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-df-new-url')" style="flex:1;" />
+            </div>
+            <div class="upload-progress-wrap" id="prog-df-new-url" style="display:none;"><div class="upload-progress-bar" id="progbar-df-new-url"></div><span id="prog-label-df-new-url">Subiendo...</span></div>
           </div>
-          <div class="form-group" style="flex:1;min-width:150px;margin:0;">
-            <label class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="df-new-titulo" placeholder="Living sala" />
+          <div style="display:flex;gap:0.5rem;align-items:flex-end;flex-wrap:wrap;">
+            <div class="form-group" style="flex:1;min-width:150px;margin:0;">
+              <label class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="df-new-titulo" placeholder="Living sala" />
+            </div>
+            <button class="btn btn-primary" onclick="addDeptoFoto()" style="white-space:nowrap;"><i class="fa-solid fa-plus"></i> Agregar</button>
           </div>
-          <button class="btn btn-primary" onclick="addDeptoFoto()" style="white-space:nowrap;"><i class="fa-solid fa-plus"></i> Agregar</button>
         </div>
       </div>
     </div>
@@ -780,12 +804,20 @@
       <input type="hidden" id="hero-id" />
       <div class="form-grid cols-1">
         <div class="form-group">
-          <label class="form-label">Ruta de imagen *</label>
-          <input type="text" class="form-control" id="hero-url" placeholder="images/207/08-terraza-vista-volcan.jpg" oninput="previewHeroImg()" />
-          <span class="form-hint">Ruta relativa desde la raíz del proyecto.</span>
-        </div>
-        <div style="text-align:center;">
-          <img id="heroModalPreview" src="" alt="Preview" style="max-height:140px;border-radius:8px;display:none;margin:0 auto;" />
+          <label class="form-label">Imagen *</label>
+          <div class="upload-field">
+            <div class="upload-preview-wrap" id="prev-hero-url" style="display:none;">
+              <img src="" alt="Preview" class="upload-preview-img" />
+              <button type="button" class="upload-remove-btn" onclick="clearUploadField('hero-url','prev-hero-url')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="upload-actions-row">
+              <input type="file" accept="image/*" id="file-hero-url" style="display:none" onchange="handleFileUpload(this,'hero-url','prev-hero-url','hero')">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-hero-url').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+              <span style="font-size:0.75rem;color:var(--mid);">o</span>
+              <input type="text" class="form-control" id="hero-url" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-hero-url')" style="flex:1;" />
+            </div>
+            <div class="upload-progress-wrap" id="prog-hero-url" style="display:none;"><div class="upload-progress-bar" id="progbar-hero-url"></div><span id="prog-label-hero-url">Subiendo...</span></div>
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label">Título (opcional)</label>
@@ -821,11 +853,20 @@
       <div class="form-grid cols-1">
         <div class="form-group"><label class="form-label">Título *</label><input type="text" class="form-control" id="act-titulo" placeholder="Lago Villarrica" /></div>
         <div class="form-group">
-          <label class="form-label">Ruta de imagen</label>
-          <input type="text" class="form-control" id="act-imagen" placeholder="images/207/07-terraza.jpg" oninput="previewActImg()" />
-        </div>
-        <div style="text-align:center;">
-          <img id="actImgPreview" src="" alt="" style="max-height:120px;border-radius:8px;display:none;margin:0 auto;" />
+          <label class="form-label">Imagen</label>
+          <div class="upload-field">
+            <div class="upload-preview-wrap" id="prev-act-imagen" style="display:none;">
+              <img src="" alt="Preview" class="upload-preview-img" />
+              <button type="button" class="upload-remove-btn" onclick="clearUploadField('act-imagen','prev-act-imagen')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="upload-actions-row">
+              <input type="file" accept="image/*" id="file-act-imagen" style="display:none" onchange="handleFileUpload(this,'act-imagen','prev-act-imagen','actividades')">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-act-imagen').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+              <span style="font-size:0.75rem;color:var(--mid);">o</span>
+              <input type="text" class="form-control" id="act-imagen" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-act-imagen')" style="flex:1;" />
+            </div>
+            <div class="upload-progress-wrap" id="prog-act-imagen" style="display:none;"><div class="upload-progress-bar" id="progbar-act-imagen"></div><span id="prog-label-act-imagen">Subiendo...</span></div>
+          </div>
         </div>
         <div class="form-group"><label class="form-label">Descripción</label><textarea class="form-control" id="act-desc" rows="4" placeholder="Descripción de la actividad..."></textarea></div>
         <div class="form-group"><label class="form-label">Orden</label><input type="number" class="form-control" id="act-orden" value="1" min="1" /></div>
@@ -850,10 +891,21 @@
       <input type="hidden" id="area-id" />
       <div class="form-grid cols-1">
         <div class="form-group">
-          <label class="form-label">Ruta de imagen *</label>
-          <input type="text" class="form-control" id="area-url" placeholder="images/comunes/juegos-infantiles.jpg" oninput="previewAreaImg()" />
+          <label class="form-label">Imagen *</label>
+          <div class="upload-field">
+            <div class="upload-preview-wrap" id="prev-area-url" style="display:none;">
+              <img src="" alt="Preview" class="upload-preview-img" />
+              <button type="button" class="upload-remove-btn" onclick="clearUploadField('area-url','prev-area-url')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="upload-actions-row">
+              <input type="file" accept="image/*" id="file-area-url" style="display:none" onchange="handleFileUpload(this,'area-url','prev-area-url','areas-comunes')">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-area-url').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+              <span style="font-size:0.75rem;color:var(--mid);">o</span>
+              <input type="text" class="form-control" id="area-url" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-area-url')" style="flex:1;" />
+            </div>
+            <div class="upload-progress-wrap" id="prog-area-url" style="display:none;"><div class="upload-progress-bar" id="progbar-area-url"></div><span id="prog-label-area-url">Subiendo...</span></div>
+          </div>
         </div>
-        <div style="text-align:center;"><img id="areaImgPreview" src="" alt="" style="max-height:120px;border-radius:8px;display:none;margin:0 auto;" /></div>
         <div class="form-group"><label class="form-label">Título / Descripción</label><input type="text" class="form-control" id="area-titulo" placeholder="Juegos Infantiles" /></div>
         <div class="form-group"><label class="form-label">Orden</label><input type="number" class="form-control" id="area-orden" value="1" min="1" /></div>
         <div class="toggle-wrap">
@@ -877,10 +929,21 @@
       <input type="hidden" id="playa-id" />
       <div class="form-grid cols-1">
         <div class="form-group">
-          <label class="form-label">Ruta de imagen *</label>
-          <input type="text" class="form-control" id="playa-url" placeholder="images/207/07-terraza.jpg" oninput="previewPlayaImg()" />
+          <label class="form-label">Imagen *</label>
+          <div class="upload-field">
+            <div class="upload-preview-wrap" id="prev-playa-url" style="display:none;">
+              <img src="" alt="Preview" class="upload-preview-img" />
+              <button type="button" class="upload-remove-btn" onclick="clearUploadField('playa-url','prev-playa-url')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="upload-actions-row">
+              <input type="file" accept="image/*" id="file-playa-url" style="display:none" onchange="handleFileUpload(this,'playa-url','prev-playa-url','playa')">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-playa-url').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+              <span style="font-size:0.75rem;color:var(--mid);">o</span>
+              <input type="text" class="form-control" id="playa-url" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-playa-url')" style="flex:1;" />
+            </div>
+            <div class="upload-progress-wrap" id="prog-playa-url" style="display:none;"><div class="upload-progress-bar" id="progbar-playa-url"></div><span id="prog-label-playa-url">Subiendo...</span></div>
+          </div>
         </div>
-        <div style="text-align:center;"><img id="playaImgPreview" src="" alt="" style="max-height:120px;border-radius:8px;display:none;margin:0 auto;" /></div>
         <div class="form-group"><label class="form-label">Título</label><input type="text" class="form-control" id="playa-titulo" placeholder="Acceso Privado al Lago" /></div>
         <div class="form-group"><label class="form-label">Descripción breve</label><input type="text" class="form-control" id="playa-desc" placeholder="Bajada exclusiva para huéspedes" /></div>
         <div class="form-group"><label class="form-label">Orden</label><input type="number" class="form-control" id="playa-orden" value="1" min="1" /></div>
@@ -911,7 +974,22 @@
         <div class="form-group"><label class="form-label">Fecha</label><input type="date" class="form-control" id="n-fecha" /></div>
         <div class="form-group span-2"><label class="form-label">Resumen</label><textarea class="form-control" id="n-resumen" rows="2"></textarea></div>
         <div class="form-group span-2"><label class="form-label">Contenido completo (HTML)</label><textarea class="form-control" id="n-contenido" rows="6"></textarea></div>
-        <div class="form-group span-2"><label class="form-label">URL imagen portada</label><input type="text" class="form-control" id="n-imagen" placeholder="images/207/08-terraza-vista-volcan.jpg" /></div>
+        <div class="form-group span-2">
+          <label class="form-label">Imagen portada</label>
+          <div class="upload-field">
+            <div class="upload-preview-wrap" id="prev-n-imagen" style="display:none;">
+              <img src="" alt="Preview" class="upload-preview-img" />
+              <button type="button" class="upload-remove-btn" onclick="clearUploadField('n-imagen','prev-n-imagen')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="upload-actions-row">
+              <input type="file" accept="image/*" id="file-n-imagen" style="display:none" onchange="handleFileUpload(this,'n-imagen','prev-n-imagen','noticias')">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-n-imagen').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+              <span style="font-size:0.75rem;color:var(--mid);">o</span>
+              <input type="text" class="form-control" id="n-imagen" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-n-imagen')" style="flex:1;" />
+            </div>
+            <div class="upload-progress-wrap" id="prog-n-imagen" style="display:none;"><div class="upload-progress-bar" id="progbar-n-imagen"></div><span id="prog-label-n-imagen">Subiendo...</span></div>
+          </div>
+        </div>
         <div class="form-group"><label class="form-label">Autor</label><input type="text" class="form-control" id="n-autor" value="Pucon Hygge Stays" /></div>
         <div class="form-group" style="justify-content:flex-end;">
           <div class="toggle-wrap" style="padding-top:1.5rem;">
@@ -929,6 +1007,53 @@
 </div>
 
 <!-- Modal: Confirm -->
+<!-- ═══ MODAL GALERÍA ═══ -->
+<div class="modal-overlay" id="modalGaleria">
+  <div class="modal">
+    <div class="modal-header"><h3 id="modalGaleriaTitle">Subir foto a la galería</h3><button class="modal-close" onclick="closeModal('modalGaleria')"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="modal-body">
+      <input type="hidden" id="gal-id" />
+      <div class="form-grid cols-1">
+        <div class="form-group">
+          <label class="form-label">Imagen *</label>
+          <div class="upload-field">
+            <div class="upload-preview-wrap" id="prev-gal-url" style="display:none;">
+              <img src="" alt="Preview" class="upload-preview-img" />
+              <button type="button" class="upload-remove-btn" onclick="clearUploadField('gal-url','prev-gal-url')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="upload-actions-row">
+              <input type="file" accept="image/*" id="file-gal-url" style="display:none" onchange="handleFileUpload(this,'gal-url','prev-gal-url','galeria')">
+              <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-gal-url').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+              <span style="font-size:0.75rem;color:var(--mid);">o</span>
+              <input type="text" class="form-control" id="gal-url" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-gal-url')" style="flex:1;" />
+            </div>
+            <div class="upload-progress-wrap" id="prog-gal-url" style="display:none;"><div class="upload-progress-bar" id="progbar-gal-url"></div><span id="prog-label-gal-url">Subiendo...</span></div>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label">Descripción / Alt</label><input type="text" class="form-control" id="gal-titulo" placeholder="Vista desde la terraza al volcán" /></div>
+        <div class="form-group"><label class="form-label">Categoría</label>
+          <select class="form-control" id="gal-categoria">
+            <option value="general">General</option>
+            <option value="depto">Departamentos</option>
+            <option value="comunes">Áreas Comunes</option>
+            <option value="playa">Playa / Lago</option>
+            <option value="vista">Vistas y Entorno</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Orden</label><input type="number" class="form-control" id="gal-orden" value="1" min="1" /></div>
+        <div class="toggle-wrap">
+          <label class="toggle"><input type="checkbox" id="gal-activo" checked /><span class="toggle-slider"></span></label>
+          <span class="toggle-label">Foto activa (visible en el sitio)</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalGaleria')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveGaleriaFoto()"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modalConfirm">
   <div class="modal modal-sm">
     <div class="modal-body" style="text-align:center;padding:2rem 1.5rem;">
@@ -1019,6 +1144,7 @@ function navigate(view) {
   if (view === 'areas')          loadAreasFotos();
   if (view === 'playa')          loadPlayaFotos();
   if (view === 'cms')            loadCMS();
+  if (view === 'galeria')        loadGaleria();
 }
 
 /* ─── SIDEBAR ─── */
@@ -1059,6 +1185,68 @@ function showConfirm(title, text, btnLabel, btnClass, cb, iconClass='') {
   confirmCallback = cb; openModal('modalConfirm');
 }
 function execConfirm() { closeModal('modalConfirm'); if (confirmCallback) confirmCallback(); confirmCallback = null; }
+
+/* ─── UPLOAD COMPONENT ─── */
+function buildUploadField({ inputId, folder, previewId, label = 'Imagen' }) {
+  return `
+    <div class="upload-field" id="uf-${inputId}">
+      <div class="upload-preview-wrap" id="${previewId}" style="display:none;">
+        <img src="" alt="Preview" class="upload-preview-img" />
+        <button type="button" class="upload-remove-btn" onclick="clearUploadField('${inputId}','${previewId}')" title="Quitar imagen">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="upload-actions-row">
+        <input type="file" accept="image/*" id="file-${inputId}" style="display:none"
+          onchange="handleFileUpload(this,'${inputId}','${previewId}','${folder}')">
+        <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-${inputId}').click()">
+          <i class="fa-solid fa-upload"></i> Subir foto
+        </button>
+        <span style="font-size:0.75rem;color:var(--mid);padding:0 0.4rem;">o</span>
+        <input type="text" class="form-control" id="${inputId}" placeholder="Pegar URL de imagen..."
+          oninput="previewFromUrlField(this.value,'${previewId}')" style="flex:1;" />
+      </div>
+      <div class="upload-progress-wrap" id="prog-${inputId}" style="display:none;">
+        <div class="upload-progress-bar" id="progbar-${inputId}"></div>
+        <span id="prog-label-${inputId}">Subiendo...</span>
+      </div>
+    </div>`;
+}
+
+async function handleFileUpload(fileInput, fieldId, previewId, folder) {
+  const file = fileInput.files[0];
+  if (!file) return;
+  const progWrap = document.getElementById(`prog-${fieldId}`);
+  const progBar = document.getElementById(`progbar-${fieldId}`);
+  const progLabel = document.getElementById(`prog-label-${fieldId}`);
+  if (progWrap) { progWrap.style.display = 'flex'; progBar.style.width = '30%'; progLabel.textContent = 'Subiendo...'; }
+  try {
+    const url = await uploadToStorage(file, folder);
+    document.getElementById(fieldId).value = url;
+    previewFromUrlField(url, previewId);
+    if (progWrap) { progBar.style.width = '100%'; progLabel.textContent = '✅ Subida completa'; setTimeout(() => { progWrap.style.display = 'none'; progBar.style.width = '0'; }, 2000); }
+    showToast('✅ Imagen subida correctamente', 'success');
+  } catch (e) {
+    if (progWrap) { progWrap.style.display = 'none'; }
+    showToast('❌ Error al subir: ' + e.message, 'error', 5000);
+  }
+  fileInput.value = '';
+}
+
+function previewFromUrlField(url, previewId) {
+  const wrap = document.getElementById(previewId);
+  if (!wrap) return;
+  if (!url) { wrap.style.display = 'none'; return; }
+  const img = wrap.querySelector('img');
+  if (img) { img.src = url; wrap.style.display = 'block'; }
+}
+
+function clearUploadField(fieldId, previewId) {
+  const inp = document.getElementById(fieldId);
+  if (inp) inp.value = '';
+  const wrap = document.getElementById(previewId);
+  if (wrap) { wrap.style.display = 'none'; const img = wrap.querySelector('img'); if (img) img.src = ''; }
+}
 
 /* ─── API (Supabase) ─── */
 async function apiGet(table, params = '') {
@@ -1791,6 +1979,8 @@ const CMS_SCHEMA = [
     {key:'nosotros_p2',label:'Párrafo 2',type:'textarea',default:'Nuestros departamentos están ubicados en un condominio con piscina, gimnasio, lavandería, salón de eventos y cancha deportiva.'},
     {key:'nosotros_badge',label:'Badge (ej: 3 deptos hygge)',type:'text',default:'3 deptos hygge'},
     {key:'nosotros_cta',label:'Botón (texto)',type:'text',default:'Reserva tu estadía'},
+    {key:'nosotros_imagen_main',label:'Imagen principal (foto grande)',type:'upload',folder:'nosotros',default:''},
+    {key:'nosotros_imagen_sec',label:'Imagen secundaria (foto pequeña)',type:'upload',folder:'nosotros',default:''},
   ]},
   { id:'cms-deptos', label:'🏢 Sección Departamentos', icon:'fa-building', fields:[
     {key:'deptos_eyebrow',label:'Eyebrow',type:'text',default:'Elige tu espacio'},
@@ -1894,14 +2084,31 @@ function renderCMSSections() {
         </div>
       </div>
       <div class="cms-section-body" id="body-${section.id}">
-        ${section.fields.map(f => `
-          <div class="cms-field-row">
-            <label class="form-label" style="margin-bottom:0.3rem;display:block;">${f.label}</label>
-            ${f.type==='textarea'
-              ? `<textarea class="form-control" id="cms-${f.key}" rows="3">${cmsData[f.key]!==undefined?cmsData[f.key]:f.default}</textarea>`
-              : `<input type="text" class="form-control" id="cms-${f.key}" value="${(cmsData[f.key]!==undefined?cmsData[f.key]:f.default).replace(/"/g,'&quot;')}" />`
-            }
-          </div>`).join('')}
+        ${section.fields.map(f => {
+          const val = cmsData[f.key]!==undefined ? cmsData[f.key] : f.default;
+          if (f.type==='upload') {
+            const previewStyle = val ? 'display:block' : 'display:none';
+            const imgSrc = val || '';
+            return `<div class="cms-field-row">
+              <label class="form-label" style="margin-bottom:0.3rem;display:block;">${f.label}</label>
+              <div class="upload-field">
+                <div class="upload-preview-wrap" id="prev-cms-${f.key}" style="${previewStyle}">
+                  <img src="${imgSrc}" alt="Preview" class="upload-preview-img" />
+                  <button type="button" class="upload-remove-btn" onclick="clearUploadField('cms-${f.key}','prev-cms-${f.key}')"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="upload-actions-row">
+                  <input type="file" accept="image/*" id="file-cms-${f.key}" style="display:none" onchange="handleFileUpload(this,'cms-${f.key}','prev-cms-${f.key}','${f.folder||'cms'}')">
+                  <button type="button" class="btn btn-sm btn-secondary" onclick="document.getElementById('file-cms-${f.key}').click()"><i class="fa-solid fa-upload"></i> Subir foto</button>
+                  <span style="font-size:0.75rem;color:var(--mid);">o</span>
+                  <input type="text" class="form-control" id="cms-${f.key}" value="${imgSrc.replace(/"/g,'&quot;')}" placeholder="Pegar URL de imagen..." oninput="previewFromUrlField(this.value,'prev-cms-${f.key}')" style="flex:1;" />
+                </div>
+                <div class="upload-progress-wrap" id="prog-cms-${f.key}" style="display:none;"><div class="upload-progress-bar" id="progbar-cms-${f.key}"></div><span id="prog-label-cms-${f.key}">Subiendo...</span></div>
+              </div>
+            </div>`;
+          }
+          if (f.type==='textarea') return `<div class="cms-field-row"><label class="form-label" style="margin-bottom:0.3rem;display:block;">${f.label}</label><textarea class="form-control" id="cms-${f.key}" rows="3">${val}</textarea></div>`;
+          return `<div class="cms-field-row"><label class="form-label" style="margin-bottom:0.3rem;display:block;">${f.label}</label><input type="text" class="form-control" id="cms-${f.key}" value="${val.replace(/"/g,'&quot;')}" /></div>`;
+        }).join('')}
       </div>
     </div>`).join('');
 }
@@ -2003,33 +2210,84 @@ async function deleteNoticia(id,titulo) {
 }
 
 /* ═══════════════════════════════════════════
-   GALLERY
+   GALERÍA (Supabase Storage)
 ═══════════════════════════════════════════ */
-function renderGallery() {
-  const imgs201=[
-    '../images/201/01-living-sala.jpg','../images/201/02-dormitorio-principal.jpg','../images/201/03-cocina-comedor.jpg',
-    '../images/201/04-living-cocina.jpg','../images/201/05-dormitorio-literas.jpg','../images/201/06-terraza.jpg',
-    '../images/201/07-bano.jpg','../images/201/08-pasillo-macrame.jpg'
-  ];
-  const imgs207=[
-    '../images/207/01-sala-living-1.jpg','../images/207/02-sala-living-2.jpg','../images/207/03-dormitorio-principal.jpg',
-    '../images/207/04-dormitorio-2.jpg','../images/207/05-dormitorio-3-twin.jpg','../images/207/06-cocina-comedor.jpg',
-    '../images/207/07-terraza.jpg','../images/207/08-terraza-vista-volcan.jpg','../images/207/09-bano.jpg',
-    '../images/207/10-dormitorio-individual.jpg','../images/207/11-bano-2.jpg','../images/207/12-cocina-2.jpg',
-    '../images/207/13-decoracion.jpg','../images/207/14-dormitorio-detalle.jpg'
-  ];
-  const imgsC=['../images/comunes/juegos-infantiles.jpg','../images/comunes/lavanderia.jpg','../images/comunes/ski-telecabina.jpg'];
-  const renderItems=imgs=>imgs.map(src=>`
+let allGaleria = [];
+let editingGaleriaId = null;
+
+async function loadGaleria() {
+  const d = await apiGet('galeria_fotos', '&order=orden.asc,created_at.desc');
+  allGaleria = d.data || [];
+  renderGaleriaGrid();
+}
+
+function renderGaleriaGrid() {
+  const grid = document.getElementById('galeria-grid');
+  if (!allGaleria.length) {
+    grid.innerHTML = '<div class="empty-state"><i class="fa-solid fa-images"></i><h3>Sin fotos en la galería</h3><p>Sube la primera foto con el botón "Subir foto".</p></div>';
+    return;
+  }
+  grid.innerHTML = allGaleria.map(f => `
     <div class="gallery-item">
-      <img src="${src}" alt="" loading="lazy" onerror="this.parentElement.style.display='none'" />
+      <img src="${f.imagen_url}" alt="${f.titulo||''}" loading="lazy"
+        onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'120\\' height=\\'80\\'><rect fill=\\'%23e8e0d5\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%23999\\' font-size=\\'12\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'>Sin imagen</text></svg>'" />
       <div class="gallery-item-overlay">
-        <button class="btn-icon" style="background:rgba(255,255,255,0.9);" onclick="navigator.clipboard.writeText('${src.replace('../','')}');showToast('Ruta copiada: ${src.replace('../','')}','info',4000)">
-          <i class="fa-solid fa-copy"></i></button>
+        <button class="btn-icon" style="background:rgba(255,255,255,0.9);" onclick="editGaleriaFoto('${f.id}')" title="Editar"><i class="fa-solid fa-pen"></i></button>
+        <button class="btn-icon danger" style="background:rgba(255,255,255,0.9);" onclick="deleteGaleriaFoto('${f.id}','${(f.titulo||'foto').replace(/'/g,'\\\'')}')" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+      </div>
+      <div style="padding:0.4rem 0.5rem;font-size:0.75rem;color:var(--mid);background:#fff;">
+        ${f.activo ? '<span style="color:var(--success);">● Activa</span>' : '<span style="color:#ccc;">● Oculta</span>'}
+        ${f.categoria ? `<span style="margin-left:0.4rem;background:var(--cream-d);border-radius:4px;padding:0 0.3rem;">${f.categoria}</span>` : ''}
       </div>
     </div>`).join('');
-  document.getElementById('gallery201').innerHTML=renderItems(imgs201);
-  document.getElementById('gallery207').innerHTML=renderItems(imgs207);
-  document.getElementById('galleryComunes').innerHTML=renderItems(imgsC);
+}
+
+function openNewGaleriaModal() {
+  editingGaleriaId = null;
+  document.getElementById('modalGaleriaTitle').textContent = 'Subir foto a la galería';
+  document.getElementById('gal-id').value = '';
+  document.getElementById('gal-url').value = '';
+  document.getElementById('gal-titulo').value = '';
+  document.getElementById('gal-orden').value = (allGaleria.length + 1);
+  document.getElementById('gal-categoria').value = 'general';
+  document.getElementById('gal-activo').checked = true;
+  clearUploadField('gal-url', 'prev-gal-url');
+  openModal('modalGaleria');
+}
+
+function editGaleriaFoto(id) {
+  const f = allGaleria.find(x => x.id === id); if (!f) return;
+  editingGaleriaId = id;
+  document.getElementById('modalGaleriaTitle').textContent = 'Editar foto de galería';
+  document.getElementById('gal-id').value = f.id;
+  document.getElementById('gal-url').value = f.imagen_url || '';
+  document.getElementById('gal-titulo').value = f.titulo || '';
+  document.getElementById('gal-orden').value = f.orden || 1;
+  document.getElementById('gal-categoria').value = f.categoria || 'general';
+  document.getElementById('gal-activo').checked = !!f.activo;
+  previewFromUrlField(f.imagen_url || '', 'prev-gal-url');
+  openModal('modalGaleria');
+}
+
+async function saveGaleriaFoto() {
+  const url = document.getElementById('gal-url').value.trim();
+  if (!url) { showToast('La imagen es obligatoria.', 'error'); return; }
+  const data = {
+    imagen_url: url,
+    titulo: document.getElementById('gal-titulo').value,
+    categoria: document.getElementById('gal-categoria').value,
+    orden: parseInt(document.getElementById('gal-orden').value) || 1,
+    activo: document.getElementById('gal-activo').checked
+  };
+  if (editingGaleriaId) { await apiPatch('galeria_fotos', editingGaleriaId, data); showToast('✅ Foto actualizada'); }
+  else { await apiPost('galeria_fotos', data); showToast('✅ Foto subida a la galería'); }
+  closeModal('modalGaleria'); await loadGaleria();
+}
+
+async function deleteGaleriaFoto(id, titulo) {
+  showConfirm('¿Eliminar foto?', `Se eliminará "${titulo}" de la galería.`, 'Eliminar', 'btn-danger', async () => {
+    await apiDelete('galeria_fotos', id); showToast('Foto eliminada', 'warning'); await loadGaleria();
+  }, 'warning');
 }
 
 /* ═══════════════════════════════════════════

@@ -64,6 +64,9 @@ async function loadCMSTextos() {
   setText('cms-nosotros-p2', data.nosotros_p2);
   setText('cms-nosotros-badge', data.nosotros_badge);
   setText('cms-nosotros-cta', data.nosotros_cta);
+  // Imágenes de nosotros desde Storage
+  if (data.nosotros_imagen_main) setAttr('nosotros-img-main', 'src', data.nosotros_imagen_main);
+  if (data.nosotros_imagen_sec)  setAttr('nosotros-img-sec',  'src', data.nosotros_imagen_sec);
 
   // Departamentos
   setText('cms-deptos-eyebrow', data.deptos_eyebrow);
@@ -429,7 +432,30 @@ async function loadPlayaFotos() {
 }
 
 /* ═══════════════════════════════════════════
-   7. VISIBILIDAD DE DEPARTAMENTOS (activo/oculto)
+   7. GALERÍA DINÁMICA — fotos desde galeria_fotos
+═══════════════════════════════════════════ */
+async function loadGaleriaDinamica() {
+  const fotos = await cmsApi('galeria_fotos', '&order=orden.asc,created_at.desc');
+  const active = fotos.filter(f => f.activo !== false);
+  if (!active.length) return; // mantener fallback estático
+
+  const masonry = document.getElementById('galeria-dinamica');
+  if (!masonry) return;
+
+  // Clases de layout para variedad visual (alterna tall/wide en las posiciones 0, 3, 5)
+  const layoutClasses = ['gal-tall','','','gal-wide','','gal-tall','','','gal-wide',''];
+
+  masonry.innerHTML = active.map((f, i) => `
+    <div class="gal-item ${layoutClasses[i % layoutClasses.length]}">
+      <img src="${f.imagen_url}" alt="${f.titulo || 'Pucon Hygge Stays'}" loading="${i < 4 ? 'eager' : 'lazy'}"
+        onerror="this.style.display='none'" />
+      <div class="gal-overlay"><span>${f.titulo || ''}</span></div>
+    </div>
+  `).join('');
+}
+
+/* ═══════════════════════════════════════════
+   8. VISIBILIDAD DE DEPARTAMENTOS (activo/oculto)
 ═══════════════════════════════════════════ */
 async function loadDepartamentosVisibility() {
   const deptos = await cmsApi('departamentos', '&order=orden.asc');
@@ -459,6 +485,7 @@ async function initCMSLoader() {
     loadActividades(),
     loadAreasComunesFotos(),
     loadPlayaFotos(),
+    loadGaleriaDinamica(),
     loadDepartamentosVisibility()
   ]);
 

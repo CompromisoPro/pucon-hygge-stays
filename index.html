@@ -756,10 +756,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
       <div class="about-grid">
         <div class="about-images reveal-left">
           <div class="about-img-main">
-            <img src="images/207/02-sala-living-2.jpg" alt="Interior hygge Depto 207" />
+            <img id="nosotros-img-main" src="images/207/02-sala-living-2.jpg" alt="Interior hygge Depto 207" />
           </div>
           <div class="about-img-secondary">
-            <img src="images/201/01-living-sala.jpg" alt="Sala de estar Depto 201" />
+            <img id="nosotros-img-sec" src="images/201/01-living-sala.jpg" alt="Sala de estar Depto 201" />
           </div>
           <div class="about-badge">
             <span class="badge-number">3</span>
@@ -1101,15 +1101,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
         <h2 class="section-title" id="cms-galeria-title">Un vistazo a<br/><em>tu próxima estadía</em></h2>
       </div>
     </div>
-    <div class="gallery-masonry">
-      <div class="gal-item gal-tall"><img src="images/207/08-terraza-vista-volcan.jpg" alt="Vista montaña volcán" /><div class="gal-overlay"><span>Vista volcán · Depto 207</span></div></div>
+    <div class="gallery-masonry" id="galeria-dinamica">
+      <!-- Cargado dinámicamente desde Supabase (galeria_fotos) -->
+      <div class="gal-item gal-tall"><img src="images/207/08-terraza-vista-volcan.jpg" alt="Vista volcán" /><div class="gal-overlay"><span>Vista volcán · Depto 207</span></div></div>
       <div class="gal-item"><img src="images/201/01-living-sala.jpg" alt="Living Depto 201" /><div class="gal-overlay"><span>Living acogedor · Depto 201</span></div></div>
-      <div class="gal-item"><img src="images/207/01-sala-living-1.jpg" alt="Sala de estar Depto 207" /><div class="gal-overlay"><span>Sala de estar · Depto 207</span></div></div>
-      <div class="gal-item gal-wide"><img src="images/201/03-cocina-comedor.jpg" alt="Cocina con isla Depto 201" /><div class="gal-overlay"><span>Cocina con isla · Depto 201</span></div></div>
+      <div class="gal-item"><img src="images/207/01-sala-living-1.jpg" alt="Sala Depto 207" /><div class="gal-overlay"><span>Sala de estar · Depto 207</span></div></div>
+      <div class="gal-item gal-wide"><img src="images/201/03-cocina-comedor.jpg" alt="Cocina Depto 201" /><div class="gal-overlay"><span>Cocina con isla · Depto 201</span></div></div>
       <div class="gal-item"><img src="images/207/07-terraza.jpg" alt="Terraza Depto 207" /><div class="gal-overlay"><span>Terraza · Depto 207</span></div></div>
-      <div class="gal-item gal-tall"><img src="images/201/02-dormitorio-principal.jpg" alt="Dormitorio con vista Depto 201" /><div class="gal-overlay"><span>Dormitorio principal · Depto 201</span></div></div>
-      <div class="gal-item"><img src="images/marina/01-lago-playa.jpg" alt="Playa privada lago" /><div class="gal-overlay"><span>Playa privada · Lago Villarrica</span></div></div>
-      <div class="gal-item"><img src="images/comunes/piscina-exterior.jpg" alt="Piscina exterior del condominio" /><div class="gal-overlay"><span>Piscina · Área común</span></div></div>
+      <div class="gal-item gal-tall"><img src="images/201/02-dormitorio-principal.jpg" alt="Dormitorio Depto 201" /><div class="gal-overlay"><span>Dormitorio principal · Depto 201</span></div></div>
+      <div class="gal-item"><img src="images/marina/01-lago-playa.jpg" alt="Playa privada" /><div class="gal-overlay"><span>Playa privada · Lago Villarrica</span></div></div>
+      <div class="gal-item"><img src="images/comunes/piscina-exterior.jpg" alt="Piscina exterior" /><div class="gal-overlay"><span>Piscina · Área común</span></div></div>
     </div>
   </section>
 
