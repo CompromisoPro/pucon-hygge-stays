@@ -1,0 +1,42 @@
+# Llama a la API REST de Supabase en intervalos regulares para generar actividad
+# en el proyecto (plan gratuito). Reduce el riesgo de pausa por inactividad.
+#
+# Requiere secrets en el repo: SUPABASE_URL y SUPABASE_ANON_KEY
+# Settings → Secrets and variables → Actions → New repository secret
+
+name: Supabase keep-alive
+
+on:
+  schedule:
+    # 2 veces al día UTC (mañana y tarde en Chile aprox.)
+    - cron: '25 8,20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping REST API (cms_textos)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          set -e
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "::notice::Secrets SUPABASE_URL / SUPABASE_ANON_KEY no están en el repo. El keep-alive no hace ping. Añádelos en Settings → Secrets → Actions (ver README)."
+            exit 0
+          fi
+          URL="${SUPABASE_URL%/}/rest/v1/cms_textos?select=id&limit=1"
+          HTTP=$(curl -sS -o /tmp/kresp.txt -w "%{http_code}" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            "$URL")
+          echo "HTTP $HTTP"
+          if [ "$HTTP" != "200" ]; then
+            cat /tmp/kresp.txt || true
+            exit 1
+          fi
+          echo "OK — Supabase respondió correctamente."

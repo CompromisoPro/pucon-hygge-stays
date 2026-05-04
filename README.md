@@ -113,6 +113,28 @@ pucoon/
 
 ---
 
+## Mantener activo el proyecto Supabase (plan gratuito)
+
+Supabase puede pausar proyectos free tras períodos largos **sin actividad**. Este repo incluye un workflow de GitHub Actions (`.github/workflows/supabase-keepalive.yml`) que **dos veces al día** llama a la API REST (`cms_textos`) para generar uso real del proyecto.
+
+### Pasos (una sola vez en GitHub)
+
+1. Entra al repositorio en GitHub → **Settings** → **Secrets and variables** → **Actions**
+2. Crea estos **repository secrets** (los mismos valores que en `js/config.js`):
+
+   | Nombre del secret | Valor |
+   |---|---|
+   | `SUPABASE_URL` | Tu Project URL, ej. `https://xxxxx.supabase.co` |
+   | `SUPABASE_ANON_KEY` | Tu **anon public** key (el mismo que `SUPABASE_KEY` en `config.js`) |
+
+3. Opcional: **Actions** → workflow **Supabase keep-alive** → **Run workflow** para probar manualmente.
+
+> Los secrets **no** se suben al código; solo GitHub Actions los usa. Sin estos secrets el workflow termina en verde pero **no hace ping** (solo muestra un aviso en los logs).
+
+> La garantía absoluta contra políticas del proveedor es el **plan de pago** en Supabase; este workflow solo reduce el riesgo en free tier.
+
+---
+
 ## ⚡ Configurar Supabase Storage (OBLIGATORIO para subir fotos)
 
 El admin ahora sube las fotos directamente a Supabase Storage. Sigue estos pasos **una sola vez**:
